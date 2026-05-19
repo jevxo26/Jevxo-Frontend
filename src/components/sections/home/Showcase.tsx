@@ -8,64 +8,30 @@ import SectionTitle from "@/components/shared/SectionTitle";
 import ShowcaseCard from "@/components/ui/ShowcaseCard";
 import FeaturedCaseStudy from "@/components/ui/FeaturedCaseStudy";
 import Decors3 from "@/components/ui/Decors/Decors3";
+import { SHOWCASE_CARDS } from "@/config/showcase";
 
-import jsIcon from "@/assets/icons/js-icon.png";
-import boxIcon from "@/assets/icons/box-icon.png";
-import meshIcon from "@/assets/icons/mesh-icon.png";
-import growthIcon from "@/assets/icons/growth-icon.png";
-import terminalIcon from "@/assets/icons/terminal-icon.png";
-import cloudIcon from "@/assets/icons/cloud-icon.png";
-import luxePreview from "@/assets/luxe-preview.png";
-import novaPreview from "@/assets/nova-preview.png";
+const jsIcon = "/icons/js-icon.png";
+const boxIcon = "/icons/box-icon.png";
+const meshIcon = "/icons/mesh-icon.png";
+const growthIcon = "/icons/growth-icon.png";
+const terminalIcon = "/icons/terminal-icon.png";
+const cloudIcon = "/icons/cloud-icon.png";
+const luxePreview = "/luxe-preview.png";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
-interface ShowcaseItem {
-  image: StaticImageData;
-  title: string;
-  icons: StaticImageData[];
-  description: string;
-}
+const ICONS_1:string[] = [jsIcon, boxIcon, meshIcon];
+const ICONS_2:string[] = [growthIcon, terminalIcon, cloudIcon];
+
 
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
 
-const ICONS_1: StaticImageData[] = [jsIcon, boxIcon, meshIcon];
-const ICONS_2: StaticImageData[] = [growthIcon, terminalIcon, cloudIcon];
 
-const SHOWCASE_CARDS: ShowcaseItem[] = [
-  {
-    image: novaPreview,
-    title: "Project Nova",
-    icons: ICONS_2,
-    description:
-      "Real-time AI monitoring dashboard for autonomous logistical fleets.",
-  },
-  {
-    image: novaPreview,
-    title: "Project Nova",
-    icons: ICONS_2,
-    description:
-      "Real-time AI monitoring dashboard for autonomous logistical fleets.",
-  },
-  {
-    image: novaPreview,
-    title: "Project Nova",
-    icons: ICONS_2,
-    description:
-      "Real-time AI monitoring dashboard for autonomous logistical fleets.",
-  },
-  {
-    image: novaPreview,
-    title: "Project Nova",
-    icons: ICONS_2,
-    description:
-      "Real-time AI monitoring dashboard for autonomous logistical fleets.",
-  },
-];
+
 
 // ---------------------------------------------------------------------------
 // Animation Variants
@@ -84,14 +50,14 @@ const fadeUp: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
 const cardHover = {
   y: -8,
   scale: 1.015,
-  transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
 };
 
 // ---------------------------------------------------------------------------

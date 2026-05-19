@@ -1,5 +1,4 @@
 import Image from "next/image";
-import centerLogo from "@/assets/center-logo.png";
 
 const CenterCore = () => {
   return (
@@ -39,7 +38,9 @@ const CenterCore = () => {
 
       {/* Logo */}
       <Image
-        src={centerLogo}
+        width={100}
+        height={100}
+        src="/images/center-logo.png"
         alt="Jevxo Core"
         className="w-[120px] h-auto relative z-10 select-none object-contain hover:scale-110 transition-transform duration-500"
       />

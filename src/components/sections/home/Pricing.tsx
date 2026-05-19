@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
-import PrimaryButton from "@/components/shared/PrimaryButton";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import Decors7 from "@/components/ui/Decors/Decors7";
 
 // ---------------------------------------------------------------------------

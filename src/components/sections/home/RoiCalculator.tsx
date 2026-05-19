@@ -19,10 +19,6 @@ import type {
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
 
-import webIcon from "@/assets/icons/language.png";
-import phnIcon from "@/assets/icons/smartphone.png";
-import growthIcon from "@/assets/icons/trending_up.png";
-import brushIcon from "@/assets/icons/brush.png";
 import ServiceCard from "@/components/ui/ServiceCard";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Decors2 from "@/components/ui/Decors/Decors2";
@@ -36,7 +32,7 @@ interface Service {
   title: string;
   multiplier: number;
   label: string;
-  icon: StaticImageData;
+  icon: string;
 }
 
 interface ChartDataPoint {
@@ -68,28 +64,28 @@ const SERVICES: Service[] = [
     title: "Web Development",
     multiplier: 1.5,
     label: "1.5X MULTIPLIER",
-    icon: webIcon,
+    icon: "/icons/language.png",
   },
   {
     id: "app",
     title: "App Development",
     multiplier: 2.0,
     label: "2X MULTIPLIER",
-    icon: phnIcon,
+    icon: "/icons/smartphone.png",
   },
   {
     id: "marketing",
     title: "Digital Marketing",
     multiplier: 3.0,
     label: "3X MULTIPLIER",
-    icon: growthIcon,
+    icon: "/icons/trending_up.png",
   },
   {
     id: "branding",
     title: "Branding & Design",
     multiplier: 1.8,
     label: "1.8X MULTIPLIER",
-    icon: brushIcon,
+    icon: "/icons/brush.png",
   },
 ];
 

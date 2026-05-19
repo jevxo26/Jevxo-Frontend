@@ -84,6 +84,8 @@ const Navbar = () => {
               className="flex items-center"
             >
               <Image
+                width={100}
+                height={100}
                 src={logo}
                 alt="Jevxo Logo"
                 className="h-6 w-auto object-contain lg:pl-12"

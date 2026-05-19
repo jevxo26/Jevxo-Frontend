@@ -12,8 +12,7 @@ import {
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
-import logo from "@/assets/logo-footer.png";
-import PrimaryButton from "@/components/shared/PrimaryButton";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import Decors8 from "@/components/ui/Decors/Decors8";
 
 // ---------------------------------------------------------------------------
@@ -92,7 +91,13 @@ const Footer = () => {
             className="md:flex md:justify-between md:items-center lg:block"
           >
             <div className="flex justify-center items-center flex-col md:block">
-              <Image src={logo} className="h-15 mb-8 lg:ml-12" alt="Jevxo" />
+              <Image
+                width={100}
+                height={100}
+                src="/images/logo-footer.png"
+                className="h-15 mb-8 lg:ml-12"
+                alt="Jevxo"
+              />
               <h2 className="text-5xl font-semibold text-primary mb-6">
                 Contact Us
               </h2>

@@ -25,6 +25,8 @@ const ServiceCard = ({ service, active, onClick }: ServiceCardProps) => (
       <div>
         <div className="flex items-center gap-3 mb-1">
           <Image
+            width={100}
+            height={100}
             src={service.icon}
             alt=""
             className="text-muted leading-none bg-[#1E293B] p-4 rounded-xl"

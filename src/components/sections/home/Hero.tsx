@@ -3,8 +3,6 @@
 import { useMemo, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-
-import heroOrbit from "../../../public/images/hero-orbit.png";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 
 // ---------------------------------------------------------------------------
@@ -16,7 +14,7 @@ interface StatCardProps {
   label: string;
 }
 
-interface StatItem{
+interface StatItem {
   id: number;
   value: string;
   label: string;
@@ -82,8 +80,6 @@ const STATS_DATA: StatItem[] = [
 // ---------------------------------------------------------------------------
 
 const Hero = () => {
-
-
   const [stars] = useState<StarItem[]>(() => {
     return Array.from({ length: 200 }, (_, i) => {
       const random = Math.random();
@@ -164,7 +160,9 @@ const Hero = () => {
           >
             <div className="absolute top-32 inset-0 m-auto w-[80%] h-[70%] bg-primary blur-[222px] rounded-full" />
             <Image
-              src={heroOrbit}
+              width={100}
+              height={100}
+              src="/images/hero-orbit.png"
               alt="Hero Orbit"
               className="relative w-full h-auto z-10 select-none"
             />

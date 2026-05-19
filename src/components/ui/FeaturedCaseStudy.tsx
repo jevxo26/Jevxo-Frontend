@@ -1,9 +1,9 @@
 import { ExternalLink } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 interface FeaturedCaseStudyProps {
-  image: StaticImageData;
-  icons: StaticImageData[];
+  image: string;
+  icons: string[];
 }
 
 const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
@@ -12,6 +12,8 @@ const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
       {/* Left: Image */}
       <div className="relative bg-[#E9E9E9] rounded-3xl">
         <Image
+          width={100}
+          height={100}
           src={image}
           alt="LuxePay"
           className="w-full h-full rounded-t-3xl md:rounded-l-3xl object-cover"
@@ -56,7 +58,14 @@ const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
         <div className="flex items-center justify-between mt-10">
           <div className="flex items-center gap-5">
             {icons.map((icon, i) => (
-              <Image key={i} src={icon} alt="" className="cursor-pointer" />
+              <Image
+                width={100}
+                height={100}
+                key={i}
+                src={icon}
+                alt=""
+                className="cursor-pointer"
+              />
             ))}
           </div>
           <button className="size-11 rounded-full bg-white/10 flex items-center justify-center border border-white/10">

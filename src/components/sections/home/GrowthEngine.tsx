@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Palette, Smartphone, Globe, TrendingUp } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
@@ -64,34 +64,47 @@ const nodeVariants: Variants = {
 // ---------------------------------------------------------------------------
 
 const GrowthEngine = () => {
-  const stars = useMemo<StarItem[]>(() => {
-    return Array.from({ length: 250 }).map((_, i) => {
+
+const [stars] = useState<StarItem[]>(() => {
+    return Array.from({ length: 200 }, (_, i) => {
       const random = Math.random();
+
       const size =
         random > 0.85
           ? "w-[3px] h-[3px]"
           : random > 0.4
             ? "w-[2px] h-[2px]"
             : "w-[1px] h-[1px]";
+
       const opacity =
         random > 0.7
-          ? "opacity-30"
+          ? "opacity-90"
           : random > 0.3
-            ? "opacity-20"
-            : "opacity-10";
+            ? "opacity-60"
+            : "opacity-30";
 
       return {
         id: i,
+
         top: `${Math.random() * 100}%`,
         left: `${Math.random() * 100}%`,
-        className: `absolute bg-white rounded-full ${size} ${opacity} ${
-          random > 0.8 ? "shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" : ""
-        } ${random > 0.75 ? "animate-pulse" : ""}`,
+
+        className: `
+        absolute
+        bg-white
+        rounded-full
+        ${size}
+        ${opacity}
+        ${random > 0.8 ? "shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" : ""}
+        ${random > 0.75 ? "animate-pulse" : ""}
+      `,
+
         delay: `${Math.random() * 4}s`,
         duration: `${2 + Math.random() * 4}s`,
       };
     });
-  }, []);
+  });
+
 
   const orbitNodes: OrbitNodeItem[] = [
     {
@@ -145,10 +158,10 @@ const GrowthEngine = () => {
         }}
       />
 
-      {/* Stars */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      {/* Stars Layer */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {stars.map((star) => (
-          <div
+          <span
             key={star.id}
             className={star.className}
             style={{

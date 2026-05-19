@@ -3,8 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
-import eduImg from "@/assets/Video Animation.png";
-import PrimaryButton from "@/components/shared/PrimaryButton";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Decors4 from "@/components/ui/Decors/Decors4";
 
@@ -106,7 +105,9 @@ const Education = () => {
           className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl mb-12 md:mb-16 lg:mb-20"
         >
           <Image
-            src={eduImg}
+            width={100}
+            height={100}
+            src="/images/Video Animation.png"
             alt="Office Environment"
             className="w-full h-auto object-cover"
           />

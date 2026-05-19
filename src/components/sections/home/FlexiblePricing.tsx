@@ -4,8 +4,6 @@ import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
-import costIcon from "@/assets/icons/cost-icon.png";
-import savingsIcon from "@/assets/icons/savings-icon.png";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Decors6 from "@/components/ui/Decors/Decors6";
 
@@ -217,7 +215,12 @@ const FlexiblePricing = () => {
               className="bg-white/5 border border-white/5 rounded-2xl p-4 md:p-8 text-center md:text-left backdrop-blur-xl"
             >
               <span className="flex gap-2 text-muted text-xs uppercase tracking-widest mb-4 justify-center md:justify-start">
-                <Image src={costIcon} alt="" />
+                <Image
+                  width={100}
+                  height={100}
+                  src="/icons/cost-icons.png"
+                  alt=""
+                />
                 Estimated Monthly Cost
               </span>
               <motion.div
@@ -241,7 +244,12 @@ const FlexiblePricing = () => {
               className="bg-white/5 border border-white/5 rounded-2xl p-4 md:p-8 text-center md:text-left backdrop-blur-xl"
             >
               <span className="flex gap-2 text-muted text-xs uppercase tracking-widest mb-4 justify-center md:justify-start">
-                <Image src={savingsIcon} alt="" />
+                <Image
+                  width={100}
+                  height={100}
+                  src="/icons/savings-icon.png"
+                  alt=""
+                />
                 Estimated Annual Savings
               </span>
               <motion.div

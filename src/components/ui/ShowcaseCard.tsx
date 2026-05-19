@@ -18,6 +18,8 @@ const ShowcaseCard = ({
       {/* Image */}
       <div className="h-[250px] overflow-hidden">
         <Image
+          width={100}
+          height={100}
           src={image}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -32,7 +34,14 @@ const ShowcaseCard = ({
         {/* Icons */}
         <div className="flex items-center gap-4 mt-6">
           {icons.map((icon, i) => (
-            <Image key={i} src={icon} alt="" className="w-5 cursor-pointer" />
+            <Image
+              width={100}
+              height={100}
+              key={i}
+              src={icon}
+              alt=""
+              className="w-5 cursor-pointer"
+            />
           ))}
         </div>
       </div>

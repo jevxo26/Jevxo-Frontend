@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 
 import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 import ReactQueryProvider from "./providers";
 import { ToastContainer } from "react-toastify";
 
