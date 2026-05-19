@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
@@ -16,6 +16,12 @@ interface StatCardProps {
   label: string;
 }
 
+interface StatItem{
+  id: number;
+  value: string;
+  label: string;
+}
+
 interface StarItem {
   id: number;
   top: string;
@@ -23,10 +29,6 @@ interface StarItem {
   className: string;
   delay: string;
   duration: string;
-}
-
-interface StatItem {
-  id: number;
   value: string;
   label: string;
 }
@@ -80,15 +82,19 @@ const STATS_DATA: StatItem[] = [
 // ---------------------------------------------------------------------------
 
 const Hero = () => {
-  const stars = useMemo<StarItem[]>(() => {
-    return Array.from({ length: 200 }).map((_, i) => {
+
+
+  const [stars] = useState<StarItem[]>(() => {
+    return Array.from({ length: 200 }, (_, i) => {
       const random = Math.random();
+
       const size =
         random > 0.85
           ? "w-[3px] h-[3px]"
           : random > 0.4
             ? "w-[2px] h-[2px]"
             : "w-[1px] h-[1px]";
+
       const opacity =
         random > 0.7
           ? "opacity-90"
@@ -98,16 +104,25 @@ const Hero = () => {
 
       return {
         id: i,
+
         top: `${Math.random() * 100}%`,
         left: `${Math.random() * 100}%`,
-        className: `absolute bg-white rounded-full ${size} ${opacity} ${
-          random > 0.8 ? "shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" : ""
-        } ${random > 0.75 ? "animate-pulse" : ""}`,
+
+        className: `
+        absolute
+        bg-white
+        rounded-full
+        ${size}
+        ${opacity}
+        ${random > 0.8 ? "shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" : ""}
+        ${random > 0.75 ? "animate-pulse" : ""}
+      `,
+
         delay: `${Math.random() * 4}s`,
         duration: `${2 + Math.random() * 4}s`,
       };
     });
-  }, []);
+  });
 
   return (
     <section className="relative w-full overflow-hidden bg-background flex items-start md:items-center">
@@ -115,9 +130,9 @@ const Hero = () => {
       <div className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:35px_40px] pointer-events-none z-20" />
 
       {/* Stars Layer */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {stars.map((star) => (
-          <div
+          <span
             key={star.id}
             className={star.className}
             style={{

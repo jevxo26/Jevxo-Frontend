@@ -6,8 +6,8 @@ import Image from "next/image";
 import { ChevronDown, Lock, Menu, X } from "lucide-react";
 
 import logo from "../../../public/images/logo-navbar.png";
-import switchBody from "../../../public/images/switch-body.png";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import ThemeToggleSwitch from "../ui/ThemeToggleSwitch";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -31,49 +31,6 @@ const NAV_LINKS: NavLink[] = [
   { label: "Success Stories", href: "#" },
   { label: "Partnership", href: "#" },
 ];
-
-// ---------------------------------------------------------------------------
-// ToggleSwitch
-// ---------------------------------------------------------------------------
-
-const ToggleSwitch = () => {
-  const [isOn, setIsOn] = useState(false);
-
-  return (
-    <div className="flex items-center gap-3">
-      <motion.div
-        animate={{ scale: isOn ? 1.08 : 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <Lock size={18} className="text-primary" />
-      </motion.div>
-
-      <motion.div
-        whileTap={{ scale: 0.96 }}
-        onClick={() => setIsOn((prev) => !prev)}
-        className="w-14 h-8 rounded-full relative border border-white/10 cursor-pointer bg-cover bg-center bg-no-repeat transition-all duration-300 overflow-hidden"
-        style={{
-          backgroundImage: `url(${switchBody.src})`,
-          filter: isOn ? "none" : "grayscale(30%) brightness(80%)",
-        }}
-      >
-        {/* Glow */}
-        <motion.div
-          animate={{ opacity: isOn ? 0.5 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-primary blur-xl"
-        />
-
-        {/* Handle */}
-        <motion.div
-          animate={{ x: isOn ? 24 : 0 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="absolute top-1 left-1 size-6 rounded-full bg-white shadow-md"
-        />
-      </motion.div>
-    </div>
-  );
-};
 
 // ---------------------------------------------------------------------------
 // Navbar
@@ -167,7 +124,7 @@ const Navbar = () => {
                 </div>
               </motion.div>
 
-              <ToggleSwitch />
+              <ThemeToggleSwitch />
 
               {/* Mobile Menu Button */}
               <motion.button
