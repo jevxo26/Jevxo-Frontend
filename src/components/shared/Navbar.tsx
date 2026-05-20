@@ -26,10 +26,10 @@ interface NavLink {
 
 const NAV_LINKS: NavLink[] = [
   { label: "The Hub", href: "#", isActive: true },
-  { label: "Solutions", href: "#", hasDropdown: true },
-  { label: "Products", href: "#" },
-  { label: "Success Stories", href: "#" },
-  { label: "Partnership", href: "#" },
+  { label: "Solutions", href: "/solutions", hasDropdown: true },
+  { label: "Products", href: "/products" },
+  { label: "Success Stories", href: "/success-stories" },
+  { label: "Partnership", href: "/partnership" },
 ];
 
 // ---------------------------------------------------------------------------
