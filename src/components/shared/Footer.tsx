@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import {
   Mail,
   MapPin,
@@ -63,123 +64,139 @@ const fadeIn: Variants = {
   }),
 };
 
-// ---------------------------------------------------------------------------
-// Footer
-// ---------------------------------------------------------------------------
-
 const Footer = () => {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const systemStatus = "Online";
 
   const handleScrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-background pt-12 md:pt-16 lg:pt-20 pb-8 relative border-t-3 border-primary overflow-hidden">
+    <footer className="bg-[#0A0F1C]/80 pt-12 md:pt-16 lg:pt-20 pb-8 relative border-t-3 border-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="hidden md:block">
-          <Decors8 />
-        </div>
+        {/* Decorative Element - Only show on Home page to keep other pages clean (Optional: remove isHome check if you want it everywhere) */}
+        {isHome && (
+          <div className="hidden md:block">
+            <Decors8 />
+          </div>
+        )}
 
-        {/* Top Grid: Brand + Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-50 items-center mb-12 md:mb-16 lg:mb-20">
-          {/* Left: Brand & Contact Info */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            custom={0}
-            viewport={{ once: true, amount: 0.2 }}
-            className="md:flex md:justify-between md:items-center lg:block"
-          >
-            <div className="flex justify-center items-center flex-col md:block">
-              <Image
-                width={100}
-                height={100}
-                src="/images/logo-footer.png"
-                className="h-15 mb-8 lg:ml-12"
-                alt="Jevxo"
-              />
-              <h2 className="text-5xl font-semibold text-primary mb-6">
-                Contact Us
-              </h2>
-              <p className="text-[#BB9C34] max-w-xs text-[18px] mb-12 tracking-wide">
-                We are committed to processing the information in order to
-                contact you and talk about your project.
-              </p>
-            </div>
+        {isHome && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-50 items-center mb-12 md:mb-16 lg:mb-20">
+            {/* Left: Brand & Contact Info */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              custom={0}
+              viewport={{ once: true, amount: 0.2 }}
+              className="md:flex md:justify-between md:items-center lg:block"
+            >
+              <div className="flex justify-center items-center flex-col md:block">
+                <Image
+                  width={100}
+                  height={100}
+                  src="/images/logo-footer.png"
+                  className="h-15 mb-8 lg:ml-12"
+                  alt="Jevxo"
+                />
+                <h2 className="text-5xl font-semibold text-primary mb-6">
+                  Contact Us
+                </h2>
+                <p className="text-[#BB9C34] max-w-xs text-[18px] mb-12 tracking-wide">
+                  We are committed to processing the information in order to
+                  contact you and talk about your project.
+                </p>
+              </div>
 
-            <div className="space-y-8 flex justify-center items-center flex-col md:block">
-              {CONTACT_ITEMS.map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
-                  custom={0.1 + i * 0.1}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-6 group"
-                >
-                  <div className="flex gap-5 hover:scale-110 hover:-translate-y-2.5 transition-all duration-300 cursor-pointer">
-                    <item.icon className="text-[#FD7E1E]" size={22} />
-                    <span className="text-primary text-lg tracking-wide">
-                      {item.text}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              <div className="space-y-8 flex justify-center items-center flex-col md:block">
+                {CONTACT_ITEMS.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="show"
+                    custom={0.1 + i * 0.1}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-6 group"
+                  >
+                    <div className="flex gap-5 hover:scale-110 hover:-translate-y-2.5 transition-all duration-300 cursor-pointer">
+                      <item.icon className="text-[#FD7E1E]" size={22} />
+                      <span className="text-primary text-lg tracking-wide">
+                        {item.text}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          {/* Right: Contact Form */}
-          <motion.form
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            custom={0.2}
-            viewport={{ once: true, amount: 0.2 }}
-            className="space-y-4"
-          >
-            <div className="grid grid-cols-1 gap-5">
-              <input
-                type="text"
-                placeholder="Name*"
-                className="w-full bg-white text-black p-4 rounded-xl outline-none"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email*"
-                className="w-full bg-white text-black p-4 rounded-xl outline-none"
-                required
-              />
-              <input
-                type="url"
-                placeholder="Website*"
-                className="w-full bg-white text-black p-4 rounded-xl outline-none z-30"
-              />
-              <textarea
-                placeholder="Message"
-                rows={4}
-                className="w-full bg-white text-black p-4 rounded-xl outline-none resize-none z-30"
-              />
-            </div>
-            <PrimaryButton type="submit" className="w-full">
-              Submit
-            </PrimaryButton>
-          </motion.form>
-        </div>
+            {/* Right: Contact Form */}
+            <motion.form
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              custom={0.2}
+              viewport={{ once: true, amount: 0.2 }}
+              className="space-y-4"
+            >
+              <div className="grid grid-cols-1 gap-5">
+                <input
+                  type="text"
+                  placeholder="Name*"
+                  className="w-full bg-white text-black p-4 rounded-xl outline-none"
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Email*"
+                  className="w-full bg-white text-black p-4 rounded-xl outline-none"
+                  required
+                />
+                <input
+                  type="url"
+                  placeholder="Website*"
+                  className="w-full bg-white text-black p-4 rounded-xl outline-none z-30"
+                />
+                <textarea
+                  placeholder="Message"
+                  rows={4}
+                  className="w-full bg-white text-black p-4 rounded-xl outline-none resize-none z-30"
+                />
+              </div>
+              <PrimaryButton type="submit" className="w-full">
+                Submit
+              </PrimaryButton>
+            </motion.form>
+          </div>
+        )}
 
-        {/* Footer Links Grid */}
+        {/* =========================================================
+            Footer Links Grid (SHOWS ON ALL PAGES)
+            ========================================================= */}
         <motion.div
           variants={fadeIn}
           initial="hidden"
           whileInView="show"
           custom={0.1}
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pt-4 mb-16"
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pt-4 mb-16 ${!isHome ? "mt-12" : ""}`}
         >
           {/* Brand blurb + socials */}
-          <div className="lg:col-span-2">
-            <p className="text-foreground/80 text-center md:text-left max-w-xs mb-8">
+          <div className="lg:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
+            {/* Logo injected here ONLY for non-home pages */}
+            {!isHome && (
+              <Image
+                width={120}
+                height={50}
+                src="/images/logo-footer.png"
+                className="h-10 w-auto mb-6 object-contain"
+                alt="Jevxo Logo"
+              />
+            )}
+
+            <p className="text-foreground/80 max-w-xs mb-8">
               The partner for enterprises building the next generation of
               digital empires.
             </p>

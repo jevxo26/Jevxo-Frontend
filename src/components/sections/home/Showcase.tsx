@@ -8,7 +8,7 @@ import SectionTitle from "@/components/shared/SectionTitle";
 import ShowcaseCard from "@/components/ui/ShowcaseCard";
 import FeaturedCaseStudy from "@/components/ui/FeaturedCaseStudy";
 import Decors3 from "@/components/ui/Decors/Decors3";
-import { SHOWCASE_CARDS } from "@/config/showcase";
+import { SHOWCASE_CARDS } from "@/config/home/showcase";
 
 const jsIcon = "/icons/js-icon.png";
 const boxIcon = "/icons/box-icon.png";

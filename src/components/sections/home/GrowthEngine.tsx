@@ -8,39 +8,16 @@ import SectionTitle from "@/components/shared/SectionTitle";
 import CenterCore from "@/components/ui/CenterCore";
 import OrbitNode from "@/components/ui/OrbitNode";
 import Decors1 from "@/components/ui/Decors/Decors1";
+import { StarItems } from "@/types/home/StarItems";
+import { OrbitNodeItems } from "@/types/home/OrbitNodeItems";
+import { orbitNodes } from "@/config/home/orbitNodeData";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
 
-interface StarItem {
-  id: number;
-  top: string;
-  left: string;
-  className: string;
-  delay: string;
-  duration: string;
-}
-
-interface OrbitNodeItem {
-  icon: React.ReactNode;
-  title: string;
-  subtitle: string;
-  style: React.CSSProperties;
-  delay: number;
-}
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
+// ─── Constants ────────────────────────────────────────────────────────────
 const SIZE = 650;
 const HALF = SIZE / 2;
 
-// ---------------------------------------------------------------------------
-// Animation Variants
-// ---------------------------------------------------------------------------
-
+// ─── Animation Variants ────────────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 36 },
   show: (delay: number = 0) => ({
@@ -49,7 +26,6 @@ const fadeUp: Variants = {
     transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay },
   }),
 };
-
 const nodeVariants: Variants = {
   hidden: { opacity: 0, scale: 0.6 },
   show: (delay: number = 0) => ({
@@ -59,13 +35,12 @@ const nodeVariants: Variants = {
   }),
 };
 
-// ---------------------------------------------------------------------------
-// GrowthEngine
-// ---------------------------------------------------------------------------
 
+// ─── Main Component ────────────────────────────────────────────────────────────
 const GrowthEngine = () => {
 
-const [stars] = useState<StarItem[]>(() => {
+  // ─── Stars Generation ────────────────────────────────────────────────────────────
+  const [stars] = useState<StarItems[]>(() => {
     return Array.from({ length: 200 }, (_, i) => {
       const random = Math.random();
 
@@ -104,38 +79,6 @@ const [stars] = useState<StarItem[]>(() => {
       };
     });
   });
-
-
-  const orbitNodes: OrbitNodeItem[] = [
-    {
-      icon: <TrendingUp size={32} className="text-primary-hover" />,
-      title: "Marketing",
-      subtitle: "Growth Synergy",
-      style: { top: 0, left: HALF, transform: "translate(-50%, -50%)" },
-      delay: 0.55,
-    },
-    {
-      icon: <Palette size={32} className="text-primary-hover" />,
-      title: "Graphics",
-      subtitle: "Visual Identity",
-      style: { top: HALF + 25, left: 0, transform: "translate(-50%, -50%)" },
-      delay: 0.65,
-    },
-    {
-      icon: <Smartphone size={32} className="text-primary-hover" />,
-      title: "App Dev",
-      subtitle: "Mobile Solutions",
-      style: { top: HALF + 25, left: SIZE, transform: "translate(-50%, -50%)" },
-      delay: 0.75,
-    },
-    {
-      icon: <Globe size={32} className="text-primary-hover" />,
-      title: "Web Arch",
-      subtitle: "High Performance",
-      style: { top: SIZE, left: HALF, transform: "translate(-50%, -50%)" },
-      delay: 0.85,
-    },
-  ];
 
   const diagonalLines = [35, -35].map((deg) => {
     const rad = (deg * Math.PI) / 180;
@@ -210,10 +153,10 @@ const [stars] = useState<StarItem[]>(() => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.2 }}
               viewport={{ once: true }}
-              className="absolute rounded-full pointer-events-none"
+              className="absolute rounded-full pointer-events-none z-10"
               style={{
-                width: 950,
-                height: 950,
+                width: 1000,
+                height: 1000,
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%,-50%)",
@@ -224,7 +167,7 @@ const [stars] = useState<StarItem[]>(() => {
 
             {/* SVG Axis Lines */}
             <motion.svg
-              className="absolute inset-0 pointer-events-none"
+              className="absolute inset-0 pointer-events-none z-20"
               width={SIZE}
               height={SIZE}
               overflow="visible"
@@ -256,7 +199,7 @@ const [stars] = useState<StarItem[]>(() => {
                   y1={y1}
                   x2={x2}
                   y2={y2}
-                  stroke="rgba(27,103,255,0.28)"
+                  stroke="#1E40AF"
                   strokeWidth="3"
                   strokeDasharray="10 7"
                 />
@@ -273,7 +216,7 @@ const [stars] = useState<StarItem[]>(() => {
                 delay: 0.4,
               }}
               viewport={{ once: true }}
-              className="absolute inset-0"
+              className="absolute inset-0 z-30"
             >
               <CenterCore />
             </motion.div>

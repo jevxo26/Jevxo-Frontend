@@ -2,12 +2,12 @@ import { ChevronDown } from 'lucide-react';
 
 const BeAPartner = () => {
 
-      const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Add your form submission logic here
-        console.log("Form Submitted!");
-      };
-      
+    //   const handleSubmit = (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     // Add your form submission logic here
+    //     console.log("Form Submitted!");
+    //   };
+
     return (
       <div className="max-w-4xl mx-auto relative">
         {/* Background Glow Effects matching the image */}
@@ -26,7 +26,7 @@ const BeAPartner = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form className="space-y-6">
             {/* Name Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">

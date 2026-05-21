@@ -3,9 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import blogPreview from "@/assets/blog-preview.png"; // replace with your image
-import authorImg from "@/assets/author.png"; // replace with your image
-
 const KnowledgeInsights = () => {
   return (
     <section
@@ -182,9 +179,10 @@ const KnowledgeInsights = () => {
                   "
                 >
                   <Image
-                    src={authorImg}
+                    src="/images/Author.png"
                     alt="Author"
-                    fill
+                    width={100}
+                    height={100}
                     className="object-cover"
                   />
                 </div>
@@ -245,10 +243,10 @@ const KnowledgeInsights = () => {
                 "
               >
                 <Image
-                  src={blogPreview}
+                  src="/images/blogPreview.png"
                   alt="Knowledge Insights"
                   className="w-full h-auto object-cover"
-                  priority
+                  fill
                 />
               </motion.div>
             </div>

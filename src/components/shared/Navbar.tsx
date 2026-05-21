@@ -1,200 +1,198 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import React, { useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, Lock, Menu, X } from "lucide-react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 import logo from "../../../public/images/logo-navbar.png";
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import ThemeToggleSwitch from "../ui/ThemeToggleSwitch";
+import ThemeToggleSwitch from "@/components/ui/ThemeToggleSwitch";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
+// ─── Types ─────────────────────────────────────────────────────────────
 interface NavLink {
   label: string;
   href: string;
-  isActive?: boolean;
   hasDropdown?: boolean;
+  children?: NavLink[]; 
 }
 
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
+// ─── Config ────────────────────────────────────────────────────────────
 const NAV_LINKS: NavLink[] = [
-  { label: "The Hub", href: "#", isActive: true },
+  { label: "The Hub", href: "/" },
   { label: "Solutions", href: "/solutions", hasDropdown: true },
   { label: "Products", href: "/products" },
   { label: "Success Stories", href: "/success-stories" },
   { label: "Partnership", href: "/partnership" },
 ];
 
-// ---------------------------------------------------------------------------
-// Navbar
-// ---------------------------------------------------------------------------
+// ─── Animation Variants ────────────────────────────────────────────────
+const mobileMenuVariants: Variants = {
+  hidden: { opacity: 0, height: 0, y: -10 },
+  visible: {
+    opacity: 1,
+    height: "auto",
+    y: 0,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: { opacity: 0, height: 0, y: -10, transition: { duration: 0.3 } },
+};
 
-const Navbar = () => {
+const navItemVariants: Variants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.04, duration: 0.35 },
+  }),
+};
+
+// ─── Main Component ────────────────────────────────────────────────────
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  const mobileMenuVariants: Variants = {
-    hidden: { opacity: 0, y: -20, scale: 0.98 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.35,
-        ease: [0.22, 1, 0.36, 1],
-        staggerChildren: 0.06,
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -10,
-      scale: 0.98,
-      transition: { duration: 0.25 },
-    },
-  };
+  const isActive = useCallback((href: string) => pathname === href, [pathname]);
 
-  const navItemVariants: Variants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-  };
+  const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
+
+  const closeMenu = useCallback(() => setIsOpen(false), []);
 
   return (
     <motion.header
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full fixed top-0 left-0 z-50"
+      className="fixed top-0 inset-x-0 z-50"
     >
-      <div className="w-full" style={{ overflowX: "clip" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 pt-2 md:pt-4 lg:pt-6 w-screen md:w-auto">
-          {/* Nav Bar */}
-          <motion.nav
-            whileHover={{ borderColor: "rgba(255,255,255,0.16)" }}
-            className="h-auto rounded-2xl border border-white/10 bg-[#0A0F1C]/80 backdrop-blur-xl flex items-center justify-between px-4 md:px-6 py-3 md:py-2 relative transition-all duration-300"
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-3 md:pt-4 lg:pt-6">
+        <motion.nav
+          className="w-full rounded-2xl border border-nav-border bg-nav-footer backdrop-blur-xl shadow-2xl px-4 sm:px-5 py-3 md:py-2 flex items-center justify-between transition-all duration-300"
+          whileHover={{ borderColor: "rgba(66, 77, 93, 0.25)" }}
+        >
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="flex items-center"
           >
-            {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              className="flex items-center"
-            >
+            <Link href="/" onClick={closeMenu} className="block">
               <Image
-                width={100}
-                height={100}
                 src={logo}
-                alt="Jevxo Logo"
-                className="h-6 w-auto object-contain lg:pl-12"
+                alt="JEVXO Logo"
+                width={140}
+                height={40}
+                className="h-7 sm:h-8 w-auto object-contain"
+                priority
               />
-            </motion.div>
+            </Link>
+          </motion.div>
 
-            {/* Desktop Nav Links */}
-            <ul className="hidden lg:flex items-center gap-10 text-sm text-white/80">
-              {NAV_LINKS.map((link, index) => (
-                <motion.li
-                  key={index}
-                  whileHover={{ y: -2, scale: 1.03 }}
-                  transition={{ duration: 0.2 }}
-                  className={`flex items-center gap-1 cursor-pointer transition duration-200 ${
-                    link.isActive ? "text-primary" : "hover:text-white"
-                  }`}
-                >
-                  <a href={link.href}>{link.label}</a>
-                  {link.hasDropdown && (
-                    <motion.div
-                      whileHover={{ rotate: 180 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown size={16} />
-                    </motion.div>
-                  )}
-                </motion.li>
-              ))}
-            </ul>
-
-            {/* Right Side */}
-            <div className="flex items-center gap-2 md:gap-4">
-              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-                <div className="shadow-[0_0_20px_rgba(216,171,90,0.45)] rounded-xl">
-                  <PrimaryButton className="hidden md:block">
-                    Launch Your Project
-                  </PrimaryButton>
-                </div>
-              </motion.div>
-
-              <ThemeToggleSwitch />
-
-              {/* Mobile Menu Button */}
-              <motion.button
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setIsOpen((prev) => !prev)}
-                className="lg:hidden text-white/80 hover:text-white focus:outline-none transition p-1"
-                aria-label="Toggle Menu"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={isOpen ? "close" : "menu"}
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                  </motion.div>
-                </AnimatePresence>
-              </motion.button>
-            </div>
-          </motion.nav>
-
-          {/* Mobile & Tablet Menu */}
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                variants={mobileMenuVariants}
+          {/* Desktop Navigation */}
+          <ul className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm">
+            {NAV_LINKS.map((link, index) => (
+              <motion.li
+                key={link.href}
                 initial="hidden"
                 animate="visible"
-                exit="exit"
-                className="mt-2 w-full lg:hidden rounded-2xl border border-white/10 bg-[#0A0F1C]/95 backdrop-blur-xl p-6 shadow-xl"
+                custom={index}
+                variants={navItemVariants}
+                className="relative group"
               >
-                <ul className="flex flex-col gap-5 text-sm text-white/80">
+                <Link
+                  href={link.href}
+                  className={`flex items-center gap-1.5 py-2 transition-colors duration-200 ${
+                    isActive(link.href)
+                      ? "text-primary font-medium"
+                      : "text-muted hover:text-accent"
+                  }`}
+                >
+                  {link.label}
+                  {link.hasDropdown && (
+                    <ChevronDown
+                      size={16}
+                      className="transition-transform group-hover:rotate-180"
+                    />
+                  )}
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+
+          {/* Right Side Actions */}
+          <div className="flex items-center gap-3">
+            <div className="hidden md:block">
+              <PrimaryButton>Launch Your Project</PrimaryButton>
+            </div>
+
+            <ThemeToggleSwitch />
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleMenu}
+              className="lg:hidden p-2 text-muted hover:text-accent transition-colors"
+              aria-label="Toggle navigation menu"
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? <X size={26} /> : <Menu size={26} />}
+              </AnimatePresence>
+            </motion.button>
+          </div>
+        </motion.nav>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="lg:hidden mt-3 rounded-2xl border border-nav-border bg-nav-footer backdrop-blur-2xl p-6 shadow-2xl overflow-hidden"
+            >
+              <nav>
+                <ul className="flex flex-col gap-1">
                   {NAV_LINKS.map((link, index) => (
                     <motion.li
-                      key={index}
+                      key={link.href}
                       variants={navItemVariants}
-                      whileHover={{ x: 6 }}
-                      transition={{ duration: 0.2 }}
-                      className={`flex items-center justify-between cursor-pointer py-1 transition ${
-                        link.isActive ? "text-primary" : "hover:text-white"
-                      }`}
+                      custom={index}
+                      className="rounded-xl"
                     >
-                      <a href={link.href}>{link.label}</a>
-                      {link.hasDropdown && <ChevronDown size={16} />}
+                      <Link
+                        href={link.href}
+                        onClick={closeMenu}
+                        className={`flex items-center justify-between px-5 py-4 text-base rounded-xl transition-all ${
+                          isActive(link.href)
+                            ? "bg-primary/10 text-primary font-medium"
+                            : "text-muted"
+                        }`}
+                      >
+                        {link.label}
+                        {link.hasDropdown && <ChevronDown size={18} />}
+                      </Link>
                     </motion.li>
                   ))}
                 </ul>
+              </nav>
 
-                {/* Mobile CTA */}
-                <motion.div
-                  variants={navItemVariants}
-                  className="mt-6 pt-6 border-t border-white/5 md:hidden"
+              {/* Mobile CTA */}
+              <div className="mt-8 pt-6 border-t border-white/10 md:hidden">
+                <PrimaryButton
+                  className="w-full py-3.5 text-base"
+                  onClick={closeMenu}
                 >
-                  <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-                    <PrimaryButton className="w-full justify-center py-3">
-                      Launch Your Project
-                    </PrimaryButton>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                  Launch Your Project
+                </PrimaryButton>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);
