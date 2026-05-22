@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@variant dark (&:where(.dark, .dark *));
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-nav-footer: var(--nav-footer);
+  --color-nav-border: var(--nav-border);
+  --color-card: var(--card);
+  --color-card-gradient: var(--card-gradient);
+  --color-card-border: var(--card-border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-glow: var(--primary-glow);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ====================== LIGHT MODE ====================== */
+:root {
+  --background: #f3f9ff;
+  --foreground: #0f172a;
+  
+  --nav-footer: rgba(222, 230, 246, 0.92);
+  --nav-border: rgba(148, 163, 184, 0.3);
+  
+  --card: #ffffff;
+  --card-gradient: linear-gradient(180deg, #ffffff 0%, #1e40af22 100%);
+  --card-border: rgba(203, 210, 219, 0.9);
+  
+  --primary: #1e40af;
+  --primary-hover: #1e3a8a;
+  --primary-glow: rgba(30, 64, 175, 0.18);
+  
+  --muted: #64748b;
+  --accent: #2563eb;
+  --border: #e2e8f0;
+}
+
+/* ====================== DARK MODE ====================== */
+.dark {
+  --background: #0B0F14;
+  --foreground: #ffffff;
+  
+  --nav-footer: rgba(10, 15, 28, 0.95);
+  --nav-border: rgba(148, 163, 184, 0.15);
+  
+  --card: #0B0F14;
+  --card-gradient: linear-gradient(180deg, #0a0f19 0%, #13171b 100%);
+  --card-border: #334155;
+  
+  --primary: #2E7BFF;
+  --primary-hover: #1b67ff;
+  --primary-glow: rgba(46, 124, 246, 0.35);
+  
+  --muted: rgba(255, 255, 255, 0.55);
+  --accent: #6fe7dd;
+  --border: #334155;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====================== BACKGROUND UTILITIES ====================== */
+/* Grid Pattern - Visible in both modes */
+@utility bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-size: 35px 40px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px);
+}
+
+/* Stars / Particles */
+@utility bg-stars-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1px);
+  background-size: 140px 140px;
+}
+
+.dark .bg-stars-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.65) 1px, transparent 1px);
+}
+
+/* Card Gradient */
+.card-gradient {
+  background: var(--card-gradient);
+}
+
+/* Orbit Glow - Works in both Light & Dark */
+.orbit-glow {
+  background: var(--primary);
+  filter: blur(123px);
+  opacity: 0.88;
+}
+
+.dark .orbit-glow {
+  opacity: 0.99;
 }
