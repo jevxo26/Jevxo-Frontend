@@ -85,3 +85,15 @@ export interface CustomTooltipProps {
   payload?: TooltipItem[];
   label?: string;
 }
+
+export interface FeaturedCaseStudyProps {
+  image: string;
+  icons: string[];
+}
+
+export interface ShowcaseCardProps {
+  image: string;
+  title: string;
+  icons: string[];
+  description: string;
+}

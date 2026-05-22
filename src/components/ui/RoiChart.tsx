@@ -64,7 +64,7 @@ const GlowingDot = ({ cx = 0, cy = 0, payload }: GlowingDotProps) => {
 const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl border border-primary/40 bg-[#060D18]/95 backdrop-blur px-4 py-3 text-sm shadow-xl">
+    <div className="rounded-xl border border-card-border card-gradient backdrop-blur px-4 py-3 text-sm shadow-xl">
       <p className="text-muted mb-1 font-medium">{String(label ?? "")}</p>
       {payload.map((p: TooltipItem, i: number) => (
         <p
