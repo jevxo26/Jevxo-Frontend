@@ -1,14 +1,11 @@
+import { FeaturedCaseStudyProps } from "@/types/home";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 
-interface FeaturedCaseStudyProps {
-  image: string;
-  icons: string[];
-}
 
 const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
   return (
-    <div className="h-full lg:col-span-2 rounded-3xl relative z-0 border border-[#77797C] bg-[#09111E] grid md:grid-cols-2 transition-all duration-500 hover:scale-102 hover:border-primary">
+    <div className="h-full lg:col-span-2 rounded-3xl relative z-0 border-card-border card-gradient grid md:grid-cols-2 transition-all duration-500 hover:scale-102 hover:border-primary">
       {/* Left: Image */}
       <div className="relative bg-[#E9E9E9] rounded-3xl">
         <Image
@@ -16,7 +13,7 @@ const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
           height={100}
           src={image}
           alt="LuxePay"
-          className="w-full h-full rounded-t-3xl md:rounded-l-3xl object-cover"
+          className="w-full h-full rounded-t-3xl md:rounded-l-3xl md:rounded-t-none object-cover"
         />
 
         {/* Center Divider */}
@@ -28,7 +25,7 @@ const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
 
         {/* Tags */}
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 rounded-md bg-[#555555] text-white text-xs tracking-wider font-medium">
+          <span className="px-3 py-1 rounded-md bg-card text-xs tracking-wider font-medium">
             LEGACY UI
           </span>
         </div>
@@ -40,15 +37,15 @@ const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
       </div>
 
       {/* Right: Content */}
-      <div className="p-10 flex flex-col justify-between bg-linear-to-b from-[#0A0E13] to-[#1B1F24] rounded-b-3xl md:rounded-r-3xl">
+      <div className="p-10 flex flex-col justify-between card-gradient rounded-b-3xl md:rounded-l-none md:rounded-r-3xl">
         <div>
-          <p className="text-[#F7D047] text-xs tracking-[0.25em] font-semibold">
+          <p className="text-secondary text-xs tracking-[0.25em] font-semibold">
             FINTECH • CASE STUDY
           </p>
           <h3 className="mt-5 text-4xl font-semibold text-foreground">
             LuxePay Revolution
           </h3>
-          <p className="mt-5 text-foreground/45 text-lg leading-relaxed max-w-[450px]">
+          <p className="mt-5 text-muted text-lg leading-relaxed">
             A complete digital overhaul of a high-net-worth payment processor,
             resulting in a 40% reduction in churn...
           </p>
@@ -59,8 +56,8 @@ const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
           <div className="flex items-center gap-5">
             {icons.map((icon, i) => (
               <Image
-                width={100}
-                height={100}
+                width={25}
+                height={25}
                 key={i}
                 src={icon}
                 alt=""
@@ -68,7 +65,7 @@ const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
               />
             ))}
           </div>
-          <button className="size-11 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
+          <button className="size-11 rounded-full bg-muted/25 flex items-center justify-center border border-card/50 hover:cursor-pointer hover:scale-130 transition-transform duration-300">
             <ExternalLink size={18} className="text-foreground" />
           </button>
         </div>

@@ -11,6 +11,7 @@
   --color-card-gradient: var(--card-gradient);
   --color-card-border: var(--card-border);
   --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-primary-hover: var(--primary-hover);
   --color-primary-glow: var(--primary-glow);
   --color-muted: var(--muted);
@@ -30,10 +31,11 @@
   --nav-border: rgba(148, 163, 184, 0.3);
   
   --card: #ffffff;
-  --card-gradient: linear-gradient(180deg, #ffffff 0%, #1e40af22 100%);
+  --card-gradient: linear-gradient(180deg, #ffffff 0%, #d2dafa77 100%);
   --card-border: rgba(203, 210, 219, 0.9);
   
   --primary: #1e40af;
+  --secondary: #f0bf6b;
   --primary-hover: #1e3a8a;
   --primary-glow: rgba(30, 64, 175, 0.18);
   
@@ -55,6 +57,7 @@
   --card-border: #334155;
   
   --primary: #2E7BFF;
+  --secondary: #E6B86A;
   --primary-hover: #1b67ff;
   --primary-glow: rgba(46, 124, 246, 0.35);
   

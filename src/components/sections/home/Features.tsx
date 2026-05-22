@@ -1,70 +1,14 @@
 "use client";
 
-import {
-  GraduationCap,
-  Calendar,
-  FileText,
-  LineChart,
-  LayoutGrid,
-  CheckSquare,
-  LucideIcon,
-} from "lucide-react";
+
 import { motion, Variants } from "framer-motion";
 
 import SectionTitle from "@/components/shared/SectionTitle";
 import Decors5 from "@/components/ui/Decors/Decors5";
+import { FEATURES } from "@/config/home/featuresData";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
 
-interface FeatureItem {
-  title: string;
-  desc: string;
-  icon: LucideIcon;
-}
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
-const FEATURES: FeatureItem[] = [
-  {
-    title: "Student Management",
-    desc: "Track attendance, grades, and progress",
-    icon: GraduationCap,
-  },
-  {
-    title: "Schedule Planning",
-    desc: "Track attendance, grades, and progress",
-    icon: Calendar,
-  },
-  {
-    title: "Report Cards",
-    desc: "Digital report card generation",
-    icon: FileText,
-  },
-  {
-    title: "Analytics",
-    desc: "Performance insights and trends",
-    icon: LineChart,
-  },
-  {
-    title: "Course Management",
-    desc: "Curriculum and syllabus tracking",
-    icon: LayoutGrid,
-  },
-  {
-    title: "Attendance Tracking",
-    desc: "Real-time attendance system",
-    icon: CheckSquare,
-  },
-];
-
-// ---------------------------------------------------------------------------
-// Animation Variants
-// ---------------------------------------------------------------------------
-
+// ─── Animation Variants  ──────────────────────────────────────────────────────
 const containerVariants: Variants = {
   hidden: {},
   visible: {
@@ -82,10 +26,8 @@ const cardFadeUp: Variants = {
   },
 };
 
-// ---------------------------------------------------------------------------
-// Features
-// ---------------------------------------------------------------------------
 
+// ─── Main Component ──────────────────────────────────────────────────────
 const Features = () => {
   return (
     <section className="relative bg-background py-12 md:py-16 lg:py-20">
@@ -125,11 +67,11 @@ const Features = () => {
                 borderColor: "rgba(46, 124, 246, 0.35)",
                 transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group p-8 flex flex-col justify-center items-center md:justify-start md:items-start rounded-3xl bg-card border border-card-border backdrop-blur-sm transition-all duration-300"
+              className="group p-8 flex flex-col justify-center items-center md:justify-start md:items-start rounded-3xl bg-card group-hover:bg-card/20 border border-card-border backdrop-blur-sm transition-all duration-300"
             >
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-[#1E293B] flex items-center justify-center mb-6 border border-white/10 group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors duration-300">
-                <feature.icon className="w-6 h-6 text-muted group-hover:text-primary transition-colors duration-300" />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-white/10 bg-primary/10 group-hover:bg-primary/25 group-hover:border-primary/20 transition-colors duration-300">
+                <feature.icon className="w-6 h-6 text-primary group-hover:text-primary transition-colors duration-300" />
               </div>
 
               {/* Title */}

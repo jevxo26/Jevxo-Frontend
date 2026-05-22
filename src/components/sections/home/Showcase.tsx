@@ -2,7 +2,6 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-import { StaticImageData } from "next/image";
 
 import SectionTitle from "@/components/shared/SectionTitle";
 import ShowcaseCard from "@/components/ui/ShowcaseCard";
@@ -16,7 +15,8 @@ const meshIcon = "/icons/mesh-icon.png";
 const growthIcon = "/icons/growth-icon.png";
 const terminalIcon = "/icons/terminal-icon.png";
 const cloudIcon = "/icons/cloud-icon.png";
-const luxePreview = "/luxe-preview.png";
+const luxePreview = "/images/luxe-preview.png";
+const novaPreview = "/images/nova-preview.png"
 
 // ---------------------------------------------------------------------------
 // Types
@@ -25,18 +25,7 @@ const luxePreview = "/luxe-preview.png";
 const ICONS_1:string[] = [jsIcon, boxIcon, meshIcon];
 const ICONS_2:string[] = [growthIcon, terminalIcon, cloudIcon];
 
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
-
-
-
-// ---------------------------------------------------------------------------
-// Animation Variants
-// ---------------------------------------------------------------------------
-
+// ─── Animation Variants ──────────────────────────────────────────────────────
 const containerVariants: Variants = {
   hidden: {},
   visible: {
@@ -60,10 +49,7 @@ const cardHover = {
   transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
 };
 
-// ---------------------------------------------------------------------------
-// Showcase
-// ---------------------------------------------------------------------------
-
+// ─── Main Component ──────────────────────────────────────────────────────
 const Showcase = () => {
   return (
     <section className="relative py-12 md:py-16 lg:py-20 bg-background">
@@ -119,9 +105,9 @@ const Showcase = () => {
           {SHOWCASE_CARDS.map((card, i) => (
             <motion.div key={i} variants={fadeUp} whileHover={cardHover}>
               <ShowcaseCard
-                image={card.image}
+                image={novaPreview}
                 title={card.title}
-                icons={card.icons}
+                icons={ICONS_2}
                 description={card.description}
               />
             </motion.div>

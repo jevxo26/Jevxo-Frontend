@@ -33,7 +33,7 @@ const RoiBudget = () => {
 
       {/* Slider */}
       <div className="mt-5 relative">
-        <div className="relative h-[6px] rounded-full bg-[#12354A]">
+        <div className="relative h-[6px] rounded-full bg-muted">
           <div
             className="absolute left-0 top-0 h-full rounded-full bg-accent transition-all"
             style={{ width: `${sliderPct}%` }}

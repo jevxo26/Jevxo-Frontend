@@ -6,20 +6,9 @@ import Image from "next/image";
 
 import SectionTitle from "@/components/shared/SectionTitle";
 import Decors6 from "@/components/ui/Decors/Decors6";
+import { SliderMarker } from "@/types/home";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-interface SliderMarker {
-  label: string;
-  value: number;
-}
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
+// ─── Constants ──────────────────────────────────────────────────────
 const SLIDER_MARKERS: SliderMarker[] = [
   { label: "100", value: 100 },
   { label: "2.5K", value: 2500 },
@@ -28,10 +17,7 @@ const SLIDER_MARKERS: SliderMarker[] = [
   { label: "10K+", value: 10000 },
 ];
 
-// ---------------------------------------------------------------------------
-// Animation Variants
-// ---------------------------------------------------------------------------
-
+// ─── Animation Variants ──────────────────────────────────────────────────────
 const containerVariants: Variants = {
   hidden: {},
   visible: {
@@ -48,10 +34,8 @@ const fadeUp: Variants = {
   },
 };
 
-// ---------------------------------------------------------------------------
-// FlexiblePricing
-// ---------------------------------------------------------------------------
 
+// ─── Main Component ──────────────────────────────────────────────────────
 const FlexiblePricing = () => {
   const [students, setStudents] = useState<number>(750);
   const [isYearly, setIsYearly] = useState<boolean>(false);
@@ -87,7 +71,7 @@ const FlexiblePricing = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, amount: 0.15 }}
           whileHover={{ y: -4, transition: { duration: 0.3 } }}
-          className="relative max-w-5xl mx-auto bg-card border border-card-border rounded-3xl mt-8 md:mt-12 p-8 md:p-12 backdrop-blur-xl overflow-hidden"
+          className="relative max-w-5xl mx-auto card-gradient border border-card-border rounded-3xl mt-8 md:mt-12 p-8 md:p-12 backdrop-blur-xl overflow-hidden"
         >
           {/* Top Row */}
           <motion.div
@@ -109,7 +93,7 @@ const FlexiblePricing = () => {
             {/* Toggle */}
             <motion.div
               variants={fadeUp}
-              className="bg-white/5 p-1 rounded-xl border border-white/10 flex self-center md:self-auto"
+              className="bg-white/5 p-1 rounded-xl border border-card-border flex self-center md:self-auto"
             >
               {[
                 { label: "Monthly", value: false },
@@ -150,7 +134,7 @@ const FlexiblePricing = () => {
                 transition={{ duration: 0.25 }}
                 className="md:text-right text-center"
               >
-                <span className="text-5xl font-bold text-[#0DB9F2]">
+                <span className="text-5xl font-bold text-accent">
                   {students}
                 </span>
                 <span className="text-muted ml-2">Students</span>
@@ -159,14 +143,14 @@ const FlexiblePricing = () => {
 
             {/* Slider Track */}
             <div className="relative">
-              <div className="relative h-[6px] rounded-full bg-white/10">
+              <div className="relative h-[6px] rounded-full bg-muted">
                 <motion.div
-                  className="absolute left-0 top-0 h-full rounded-full bg-[#00D1FF]"
+                  className="absolute left-0 top-0 h-full rounded-full bg-accent"
                   animate={{ width: `${sliderPercent}%` }}
                   transition={{ duration: 0.25 }}
                 />
                 <motion.div
-                  className="absolute top-1/2 size-5 rounded-full bg-[#F7C93E] border-4 border-[#00D1FF] -translate-x-1/2 -translate-y-1/2"
+                  className="absolute top-1/2 size-5 rounded-full bg-[#F7C93E] border-4 border-accent -translate-x-1/2 -translate-y-1/2"
                   animate={{ left: `${sliderPercent}%` }}
                   transition={{ duration: 0.25 }}
                   whileHover={{ scale: 1.2 }}
@@ -190,8 +174,8 @@ const FlexiblePricing = () => {
                   key={value}
                   whileHover={{ scale: 1.08 }}
                   onClick={() => setStudents(value)}
-                  className={`cursor-pointer transition-colors duration-200 hover:text-[#00D1FF] ${
-                    students === value ? "text-[#00D1FF] font-semibold" : ""
+                  className={`cursor-pointer transition-colors duration-200 hover:text-accent ${
+                    students === value ? "text-accent font-semibold" : ""
                   }`}
                 >
                   {label}
@@ -212,13 +196,13 @@ const FlexiblePricing = () => {
             <motion.div
               variants={fadeUp}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="bg-white/5 border border-white/5 rounded-2xl p-4 md:p-8 text-center md:text-left backdrop-blur-xl"
+              className="bg-card border border-card-border rounded-2xl p-4 md:p-8 text-center md:text-left backdrop-blur-xl"
             >
               <span className="flex gap-2 text-muted text-xs uppercase tracking-widest mb-4 justify-center md:justify-start">
                 <Image
-                  width={100}
-                  height={100}
-                  src="/icons/cost-icons.png"
+                  width={20}
+                  height={20}
+                  src="/icons/cost-icon.png"
                   alt=""
                 />
                 Estimated Monthly Cost
@@ -228,11 +212,11 @@ const FlexiblePricing = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="text-4xl font-bold text-[#0DB9F2] mb-2"
+                className="text-4xl font-bold text-accent mb-2"
               >
                 ${monthlyCost}
               </motion.div>
-              <span className="text-[#147DA1] font-semibold text-sm">
+              <span className="text-accent/80 font-semibold text-sm">
                 Electric Blue Scalability
               </span>
             </motion.div>
@@ -241,12 +225,12 @@ const FlexiblePricing = () => {
             <motion.div
               variants={fadeUp}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="bg-white/5 border border-white/5 rounded-2xl p-4 md:p-8 text-center md:text-left backdrop-blur-xl"
+              className="bg-card border border-card-border rounded-2xl p-4 md:p-8 text-center md:text-left backdrop-blur-xl"
             >
               <span className="flex gap-2 text-muted text-xs uppercase tracking-widest mb-4 justify-center md:justify-start">
                 <Image
-                  width={100}
-                  height={100}
+                  width={20}
+                  height={20}
                   src="/icons/savings-icon.png"
                   alt=""
                 />
@@ -257,11 +241,11 @@ const FlexiblePricing = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="text-4xl font-bold text-[#FBBE24] mb-2"
+                className="text-4xl font-bold text-secondary mb-2"
               >
                 Save ${annualSavings}
               </motion.div>
-              <span className="text-[#967C50] font-semibold text-sm">
+              <span className="text-secondary/80 font-semibold text-sm">
                 With Premium Support Access
               </span>
             </motion.div>

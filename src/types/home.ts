@@ -85,3 +85,35 @@ export interface CustomTooltipProps {
   payload?: TooltipItem[];
   label?: string;
 }
+
+export interface FeaturedCaseStudyProps {
+  image: string;
+  icons: string[];
+}
+
+export interface ShowcaseCardProps {
+  image: string;
+  title: string;
+  icons: string[];
+  description: string;
+}
+
+export interface FeatureItems {
+  title: string;
+  desc: string;
+  icon: LucideIcon;
+}
+
+export interface PlanItems {
+  name: string;
+  icon: LucideIcon;
+  desc: string;
+  features: string[];
+  buttonText: string;
+  isFeatured: boolean;
+}
+
+export interface SliderMarker {
+  label: string;
+  value: number;
+}
