@@ -73,7 +73,7 @@ const Footer = () => {
   const handleScrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-[#0A0F1C]/80 pt-12 md:pt-16 lg:pt-20 pb-8 relative border-t-3 border-primary overflow-hidden">
+    <footer className="bg-nav-footer pt-12 md:pt-16 lg:pt-20 pb-8 relative border-t-3 border-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Decorative Element - Only show on Home page to keep other pages clean (Optional: remove isHome check if you want it everywhere) */}
         {isHome && (

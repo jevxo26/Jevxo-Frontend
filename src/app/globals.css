@@ -31,7 +31,7 @@
   
   --card: #ffffff;
   --card-gradient: linear-gradient(180deg, #ffffff 0%, #1e40af22 100%);
-  --card-border: rgba(226, 232, 240, 0.9);
+  --card-border: rgba(203, 210, 219, 0.9);
   
   --primary: #1e40af;
   --primary-hover: #1e3a8a;
@@ -50,7 +50,7 @@
   --nav-footer: rgba(10, 15, 28, 0.95);
   --nav-border: rgba(148, 163, 184, 0.15);
   
-  --card: #1B2527;
+  --card: #0B0F14;
   --card-gradient: linear-gradient(180deg, #0a0f19 0%, #13171b 100%);
   --card-border: #334155;
   

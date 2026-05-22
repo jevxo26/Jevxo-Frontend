@@ -1,17 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+
 import { motion, Variants } from "framer-motion";
+
 import Image from "next/image";
+
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import { StarItems } from "@/types/home/StarItems";
-import { StatItems } from "@/types/home/StatItems";
+
 import { STATS_DATA } from "@/config/home/statsData";
 
+import { StarItems, StatItems } from "@/types/home";
+
 // ─── Stat Card ────────────────────────────────────────────────────────────
+
 const StatCard = ({ value, label }: StatItems) => (
   <div className="text-center">
     <h3 className="text-2xl sm:text-4xl font-bold text-primary">{value}</h3>
+
     <p className="mt-1 text-[11px] sm:text-sm text-muted whitespace-nowrap">
       {label}
     </p>
@@ -19,28 +25,34 @@ const StatCard = ({ value, label }: StatItems) => (
 );
 
 // ─── Animation Variants ────────────────────────────────────────────────────────────
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
+
   show: (delay: number = 0) => ({
     opacity: 1,
+
     y: 0,
+
     transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay },
   }),
 };
 
 const fadeIn: Variants = {
   hidden: { opacity: 0 },
+
   show: (delay: number = 0) => ({
     opacity: 1,
+
     transition: { duration: 0.9, ease: "easeOut", delay },
   }),
 };
 
-
 // ─── Main Component ────────────────────────────────────────────────────────────
-const Hero = () => {
 
+const Hero = () => {
   // ─── Stars Generation ────────────────────────────────────────────────────────────
+
   const [stars] = useState<StarItems[]>(() => {
     return Array.from({ length: 200 }, (_, i) => {
       const random = Math.random();
@@ -61,22 +73,34 @@ const Hero = () => {
 
       return {
         id: i,
+
         top: `${Math.random() * 100}%`,
+
         left: `${Math.random() * 100}%`,
+
         className: `
+
           absolute bg-white rounded-full ${size} ${opacity}
+
           ${random > 0.8 ? "shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" : ""}
+
           ${random > 0.75 ? "animate-pulse" : ""}
+
         `,
+
         delay: `${Math.random() * 4}s`,
+
         duration: `${2 + Math.random() * 4}s`,
       };
     });
   });
 
   return (
-    <section className="relative w-full overflow-hidden bg-background flex items-start md:items-center bg-grid-pattern">
+    <section className="relative w-full overflow-hidden bg-background flex items-start md:items-center">
+      {/* Grid layer with fade */}
+      <div className="absolute inset-0 bg-grid-pattern z-0 [mask-image:linear-gradient(to_bottom,white_60%,transparent_100%)]" />
       {/* Stars Layer - Fixed for Light Mode */}
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
         {stars.map((star) => (
           <span
@@ -84,8 +108,11 @@ const Hero = () => {
             className={star.className}
             style={{
               top: star.top,
+
               left: star.left,
+
               animationDelay: star.delay,
+
               animationDuration: star.duration,
             }}
           />
@@ -94,12 +121,15 @@ const Hero = () => {
 
       <div className="relative w-full max-w-7xl mx-auto px-4 md:px-6 pt-28 pb-12 md:pt-32 md:pb-17">
         {/* Right Side Orbit - Kept Exactly as you had */}
+
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{
             duration: 1.1,
+
             ease: [0.25, 0.46, 0.45, 0.94],
+
             delay: 0.3,
           }}
           className="absolute -translate-y-1/2 pointer-events-none select-none z-0 left-1/2 top-1/2 -translate-x-1/2 w-[130%] max-w-md opacity-30 md:left-auto md:right-20 md:top-5/9 md:translate-x-1/4 md:w-[70%] md:max-w-xl md:opacity-60 lg:w-[55%] lg:right-28 lg:top-3/8 lg:max-w-2xl lg:opacity-100 xl:max-w-3xl transition-all duration-500"
@@ -109,6 +139,7 @@ const Hero = () => {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
             {/* Fixed Orbit Glow */}
+
             <div className="orbit-glow absolute top-32 inset-0 m-auto w-[80%] h-[70%] rounded-full" />
 
             <Image
@@ -124,6 +155,7 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
           <div className="relative z-30 w-full lg:max-w-[65%] xl:max-w-3xl text-left">
             {/* Heading */}
+
             <motion.h1
               variants={fadeUp}
               initial="hidden"
@@ -136,6 +168,7 @@ const Hero = () => {
             </motion.h1>
 
             {/* Subtitle */}
+
             <motion.p
               variants={fadeUp}
               initial="hidden"
@@ -148,6 +181,7 @@ const Hero = () => {
             </motion.p>
 
             {/* CTA */}
+
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -158,6 +192,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Stats */}
+
             <motion.div
               variants={fadeIn}
               initial="hidden"
@@ -181,7 +216,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 right-0 w-full h-44 bg-gradient-to-b from-transparent to-background pointer-events-none z-10" />
+      <div className="absolute bottom-0 right-0 w-full h-44 bg-gradient-to-b from-transparent to-background pointer-events-none z-0" />
     </section>
   );
 };
