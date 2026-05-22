@@ -6,30 +6,16 @@ import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Decors4 from "@/components/ui/Decors/Decors4";
+import { StatItems } from "@/types/home";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-interface StatItem {
-  label: string;
-  value: string;
-}
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
-const STATS: StatItem[] = [
+// ─── Constants  ──────────────────────────────────────────────────────
+const STATS: StatItems[] = [
   { label: "School", value: "11k" },
   { label: "Students", value: "500k" },
   { label: "Average Roll", value: "100%" },
 ];
 
-// ---------------------------------------------------------------------------
-// Animation Variants
-// ---------------------------------------------------------------------------
-
+// ─── Animation Variants ──────────────────────────────────────────────────────
 const containerVariants: Variants = {
   hidden: {},
   visible: {
@@ -46,10 +32,8 @@ const fadeUp: Variants = {
   },
 };
 
-// ---------------------------------------------------------------------------
-// Education
-// ---------------------------------------------------------------------------
 
+// ─── Main Component ──────────────────────────────────────────────────────
 const Education = () => {
   return (
     <section className="relative bg-background py-12 md:py-16 lg:py-20">
@@ -89,7 +73,7 @@ const Education = () => {
           <motion.button
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.96 }}
-            className="px-5 py-2 rounded-xl font-semibold border-2 border-[#B8BCCB] bg-[#727E9D] backdrop-blur-md text-[#E6B86A] hover:bg-[#727E9D]/80 cursor-pointer transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+            className="px-5 py-2 rounded-xl font-semibold border-2 border-[#B8BCCB] bg-muted backdrop-blur-md text-secondary hover:bg-[#727E9D]/75 cursor-pointer transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)]"
           >
             Watch video
           </motion.button>
@@ -102,16 +86,14 @@ const Education = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, amount: 0.2 }}
           whileHover={{ y: -6, transition: { duration: 0.35 } }}
-          className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl mb-12 md:mb-16 lg:mb-20"
+          className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl mb-12 md:mb-16 lg:mb-20"
         >
           <Image
-            width={100}
+            width={1100}
             height={100}
             src="/images/Video Animation.png"
             alt="Office Environment"
-            className="w-full h-auto object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent pointer-events-none" />
         </motion.div>
 
         {/* Stats */}

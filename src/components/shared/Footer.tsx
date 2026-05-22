@@ -16,19 +16,13 @@ import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import Decors8 from "@/components/ui/Decors/Decors8";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
+// ─── Types ──────────────────────────────────────────────────────
 interface ContactItem {
   icon: LucideIcon;
   text: string;
 }
 
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
+// ─── Constants ──────────────────────────────────────────────────────
 const CONTACT_ITEMS: ContactItem[] = [
   { icon: Mail, text: "contact@jevxo.com" },
   { icon: MapPin, text: "Rajshahi, Bangladesh" },
@@ -43,10 +37,7 @@ const FOOTER_LINKS: Record<string, string[]> = {
 
 const SOCIAL_ICONS: LucideIcon[] = [Globe, Share2, Mail];
 
-// ---------------------------------------------------------------------------
-// Animation Variants
-// ---------------------------------------------------------------------------
-
+// ─── Animation Variants ──────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: (delay: number = 0) => ({
@@ -64,6 +55,8 @@ const fadeIn: Variants = {
   }),
 };
 
+
+// ─── Main Component ──────────────────────────────────────────────────────
 const Footer = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -95,16 +88,16 @@ const Footer = () => {
             >
               <div className="flex justify-center items-center flex-col md:block">
                 <Image
-                  width={100}
-                  height={100}
+                  width={120}
+                  height={25}
                   src="/images/logo-footer.png"
-                  className="h-15 mb-8 lg:ml-12"
+                  className="mb-8 lg:ml-12"
                   alt="Jevxo"
                 />
                 <h2 className="text-5xl font-semibold text-primary mb-6">
                   Contact Us
                 </h2>
-                <p className="text-[#BB9C34] max-w-xs text-[18px] mb-12 tracking-wide">
+                <p className="text-secondary max-w-xs text-[18px] mb-12 tracking-wide">
                   We are committed to processing the information in order to
                   contact you and talk about your project.
                 </p>
@@ -121,8 +114,8 @@ const Footer = () => {
                     viewport={{ once: true }}
                     className="flex items-center gap-6 group"
                   >
-                    <div className="flex gap-5 hover:scale-110 hover:-translate-y-2.5 transition-all duration-300 cursor-pointer">
-                      <item.icon className="text-[#FD7E1E]" size={22} />
+                    <div className="flex items-center gap-5 hover:scale-110 hover:-translate-y-2.5 transition-all duration-300 cursor-pointer">
+                      <item.icon className="text-secondary" size={22} />
                       <span className="text-primary text-lg tracking-wide">
                         {item.text}
                       </span>
@@ -181,17 +174,17 @@ const Footer = () => {
           whileInView="show"
           custom={0.1}
           viewport={{ once: true, amount: 0.2 }}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pt-4 mb-16 ${!isHome ? "mt-12" : ""}`}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12`}
         >
           {/* Brand blurb + socials */}
           <div className="lg:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
             {/* Logo injected here ONLY for non-home pages */}
             {!isHome && (
               <Image
-                width={120}
-                height={50}
+                width={125}
+                height={25}
                 src="/images/logo-footer.png"
-                className="h-10 w-auto mb-6 object-contain"
+                className="mb-6 lg:ml-12"
                 alt="Jevxo Logo"
               />
             )}
@@ -204,9 +197,9 @@ const Footer = () => {
               {SOCIAL_ICONS.map((Icon, i) => (
                 <div
                   key={i}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#BB9B33] hover:text-foreground hover:border-white/30 transition-all cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-card-border flex items-center justify-center text-secondary hover:text-foreground hover:border-muted transition-all cursor-pointer"
                 >
-                  <Icon size={18} />
+                  <Icon size={20} />
                 </div>
               ))}
             </div>

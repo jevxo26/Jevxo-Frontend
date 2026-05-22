@@ -1,78 +1,13 @@
 "use client";
 
-import {
-  CheckCircle2,
-  GraduationCap,
-  Home,
-  Zap,
-  LucideIcon,
-} from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import Decors7 from "@/components/ui/Decors/Decors7";
+import { PLANS } from "@/config/home/plansData";
+import { CheckCircle2 } from "lucide-react";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-interface PlanItem {
-  name: string;
-  icon: LucideIcon;
-  desc: string;
-  features: string[];
-  buttonText: string;
-  isFeatured: boolean;
-}
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
-const PLANS: PlanItem[] = [
-  {
-    name: "Essential",
-    icon: GraduationCap,
-    desc: "Perfect for growing schools and specialized academies.",
-    features: [
-      "Up to 250 students",
-      "Basic Academic Records",
-      "Attendance Tracking",
-    ],
-    buttonText: "Start Free",
-    isFeatured: false,
-  },
-  {
-    name: "Pro Management",
-    icon: Home,
-    desc: "Advanced tools for data-driven educational institutions.",
-    features: [
-      "Up to 1,000 students",
-      "Full Finance & Analytics",
-      "Parent/Teacher Portal",
-      "Automated Scheduling",
-    ],
-    buttonText: "Upgrade to Pro",
-    isFeatured: true,
-  },
-  {
-    name: "Ultimate",
-    icon: Zap,
-    desc: "Custom ecosystem for large districts and universities.",
-    features: [
-      "Unlimited Students",
-      "API Access & Webhooks",
-      "Dedicated Account Manager",
-    ],
-    buttonText: "Contact Sales",
-    isFeatured: false,
-  },
-];
-
-// ---------------------------------------------------------------------------
-// Animation Variants
-// ---------------------------------------------------------------------------
-
+// ─── Animation Variants ──────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 36 },
   show: (delay: number = 0) => ({
@@ -82,10 +17,8 @@ const fadeUp: Variants = {
   }),
 };
 
-// ---------------------------------------------------------------------------
-// Pricing
-// ---------------------------------------------------------------------------
 
+// ─── Main Component ──────────────────────────────────────────────────────
 const Pricing = () => {
   return (
     <section className="bg-background py-12 md:py-16 lg:py-20 relative">
@@ -106,18 +39,18 @@ const Pricing = () => {
               viewport={{ once: true, amount: 0.2 }}
               className={`relative p-8 rounded-2xl border transition-all ${
                 plan.isFeatured
-                  ? "bg-card/80 rounded-3xl scale-105 md:scale-110 border-[#FFCE56]/50 shadow-[0_0_40px_rgba(255,206,86,0.1)]"
+                  ? "bg-card/80 rounded-3xl scale-105 md:scale-110 border-secondary/50 shadow-[0_0_40px_rgba(255,206,86,0.1)]"
                   : "bg-card border-card-border"
               }`}
             >
               {plan.isFeatured && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-[#FFCE56] rounded-b-full shadow-[0_0_15px_#FFCE56]" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-secondary rounded-b-full shadow-[0_0_15px_#FFCE56]" />
               )}
 
               {/* Icon */}
               <div
                 className={`w-12 h-12 rounded-xl ${
-                  plan.isFeatured ? "bg-[#2A2918]" : "bg-[#1F2327]"
+                  plan.isFeatured ? "bg-muted/80" : "bg-muted/50"
                 } flex items-center justify-center mb-8 border border-white/10`}
               >
                 <plan.icon className="text-accent" size={24} />
@@ -152,7 +85,7 @@ const Pricing = () => {
               {plan.isFeatured ? (
                 <PrimaryButton className="w-full">Upgrade to Pro</PrimaryButton>
               ) : (
-                <button className="w-full py-4 rounded-2xl font-bold transition-all border border-card-border text-foreground hover:bg-white/5">
+                <button className="w-full py-4 rounded-2xl font-bold transition-all border border-card-border bg-muted/25 hover:bg-muted/50 duration-300 text-foreground hover:cursor-pointer">
                   {plan.buttonText}
                 </button>
               )}

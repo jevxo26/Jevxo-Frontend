@@ -97,3 +97,23 @@ export interface ShowcaseCardProps {
   icons: string[];
   description: string;
 }
+
+export interface FeatureItems {
+  title: string;
+  desc: string;
+  icon: LucideIcon;
+}
+
+export interface PlanItems {
+  name: string;
+  icon: LucideIcon;
+  desc: string;
+  features: string[];
+  buttonText: string;
+  isFeatured: boolean;
+}
+
+export interface SliderMarker {
+  label: string;
+  value: number;
+}
