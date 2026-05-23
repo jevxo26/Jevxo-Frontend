@@ -5,7 +5,7 @@ import WhyPartner from "@/components/sections/partnership/WhyPartner";
 
 const page = () => {
     return (
-        <div>
+        <div className="bg-background">
             <Hero/>
             <WhyPartner/>
             <TechPartners/>

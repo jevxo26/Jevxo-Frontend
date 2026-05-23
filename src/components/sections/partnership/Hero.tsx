@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, TrendingUp, Cpu, Handshake } from "lucide-react";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 
 const Hero = () => {
   return (
-    <section className="relative py-24 bg-background overflow-hidden flex flex-col items-center">
+    <section className="relative py-12 md:py-16 lg:py-20 mt-16 overflow-hidden flex flex-col items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-cyan-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.3)] mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-accent drop-shadow-[0_0_25px_rgba(34,211,238,0.3)] mb-6 leading-tight">
             Strategic Partnerships & <br className="hidden sm:block" />{" "}
             Ecosystem
           </h2>
@@ -17,12 +18,9 @@ const Hero = () => {
             leaders to drive the next wave of digital transformation.
           </p>
 
-          <Link
-            href="/partner"
-            className="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-black font-bold px-8 py-3.5 rounded-full transition-transform hover:scale-105 shadow-[0_0_20px_rgba(245,158,11,0.25)]"
-          >
+          <PrimaryButton className="flex gap-2 items-center py-5">
             Become a Partner <ArrowRight size={20} />
-          </Link>
+          </PrimaryButton>
         </div>
       </div>
 

@@ -4,7 +4,7 @@ import Stories from "@/components/sections/success-stories/Stories";
 
 const page = () => {
     return (
-        <div>
+        <div className="bg-background">
             <KnowledgeInsights/>
             <Stories/>
             <Newsletter/>

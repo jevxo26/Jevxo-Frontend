@@ -68,29 +68,12 @@ const RoiGrowthEngine = () => {
       className="
         relative
         overflow-hidden
-        py-16
-        md:py-20
-        lg:py-24
+        py-12
+        md:py-16
+        lg:py-20
         bg-background
       "
     >
-      {/* BACKGROUND GLOW */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-grid-pattern
-          opacity-40
-        "
-      />
-
-      <div
-        className="
-          absolute
-          inset-0
-          bg-[radial-gradient(circle_at_center,rgba(46,124,246,0.14),transparent_65%)]
-        "
-      />
 
       <div
         className="
@@ -139,8 +122,8 @@ const RoiGrowthEngine = () => {
         {/* MAIN GRID */}
         <div
           className="
-            mt-12
-            lg:mt-16
+            mt-8
+            md:mt-12
             grid
             grid-cols-1
             lg:grid-cols-2
@@ -157,7 +140,6 @@ const RoiGrowthEngine = () => {
               backdrop-blur-xl
               p-5
               md:p-7
-              shadow-[0_0_40px_rgba(0,0,0,0.25)]
             "
           >
             {/* TOP */}

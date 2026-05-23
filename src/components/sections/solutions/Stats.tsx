@@ -33,15 +33,18 @@ const Stats = () => {
   return (
     <div
       className="
-            mt-16
+            my-12
+            md:my-16 lg:my-20
             grid
             grid-cols-2
             md:grid-cols-4
+            justify-center
             gap-10
+            px-4 md:px-6
           "
     >
       {stats.map((item) => (
-        <div key={item.id} className="text-center md:text-left">
+        <div key={item.id} className="text-center">
           <h3
             className={`
                   text-4xl
