@@ -9,20 +9,9 @@ const KnowledgeInsights = () => {
       className="
         relative
         overflow-hidden
-        py-16 md:py-24
-        bg-background
-        bg-grid-pattern
+        py-12 md:py-16 lg:py-20 mt-16
       "
     >
-      {/* Background Glow */}
-      <div
-        className="
-          absolute
-          inset-0
-          pointer-events-none
-          bg-[radial-gradient(circle_at_top,rgba(46,124,246,0.12),transparent_45%)]
-        "
-      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         {/* SECTION HEADER */}
@@ -73,11 +62,11 @@ const KnowledgeInsights = () => {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="
             mt-14
-            rounded-[28px]
+            rounded-3xl
             overflow-hidden
             border
             border-card-border
-            bg-card/70
+            bg-card
             backdrop-blur-2xl
             shadow-[0_0_60px_rgba(0,0,0,0.35)]
           "
@@ -92,21 +81,8 @@ const KnowledgeInsights = () => {
                 justify-center
                 p-8
                 md:p-12
-                lg:p-14
               "
             >
-              {/* subtle glow */}
-              <div
-                className="
-                  absolute
-                  left-0
-                  top-0
-                  h-full
-                  w-full
-                  bg-[radial-gradient(circle_at_left,rgba(46,124,246,0.08),transparent_55%)]
-                  pointer-events-none
-                "
-              />
 
               {/* META */}
               <div className="flex items-center gap-3 mb-8 flex-wrap">
@@ -119,10 +95,10 @@ const KnowledgeInsights = () => {
                     font-bold
                     tracking-widest
                     uppercase
-                    bg-[#D8AB5A]/20
-                    text-[#D8AB5A]
+                    bg-secondary/25
+                    text-secondary
                     border
-                    border-[#D8AB5A]/20
+                    border-secondary/50
                   "
                 >
                   Featured
@@ -165,7 +141,7 @@ const KnowledgeInsights = () => {
               </p>
 
               {/* AUTHOR */}
-              <div className="flex items-center gap-4 mt-10">
+              <div className="flex items-center gap-4 mt-8">
                 <div
                   className="
                     relative
