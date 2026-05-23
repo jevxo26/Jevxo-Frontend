@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import FeaturedStoryImage from "@/components/ui/FeaturedStoryImage";
 
 const KnowledgeInsights = () => {
   return (
@@ -12,7 +13,6 @@ const KnowledgeInsights = () => {
         py-12 md:py-16 lg:py-20 mt-16
       "
     >
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         {/* SECTION HEADER */}
         <motion.div
@@ -83,7 +83,6 @@ const KnowledgeInsights = () => {
                 md:p-12
               "
             >
-
               {/* META */}
               <div className="flex items-center gap-3 mb-8 flex-wrap">
                 <span
@@ -174,58 +173,7 @@ const KnowledgeInsights = () => {
             </div>
 
             {/* RIGHT IMAGE */}
-            <div
-              className="
-                relative
-                min-h-[320px]
-                md:min-h-[500px]
-                bg-[linear-gradient(180deg,#101B3B_0%,#111827_100%)]
-                flex
-                items-center
-                justify-center
-                p-6
-                md:p-10
-              "
-            >
-              {/* ambient glow */}
-              <div
-                className="
-                  absolute
-                  inset-0
-                  bg-[radial-gradient(circle,rgba(46,124,246,0.18),transparent_60%)]
-                "
-              />
-
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  relative
-                  w-full
-                  max-w-[520px]
-                  rounded-3xl
-                  overflow-hidden
-                  border
-                  border-white/5
-                  bg-white/[0.03]
-                  backdrop-blur-xl
-                  shadow-[0_0_60px_rgba(46,124,246,0.18)]
-                "
-              >
-                <Image
-                  src="/images/blogPreview.png"
-                  alt="Knowledge Insights"
-                  className="w-full h-auto object-cover"
-                  fill
-                />
-              </motion.div>
-            </div>
+           <FeaturedStoryImage/>
           </div>
         </motion.div>
       </div>

@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { Search, ArrowRight, Download } from "lucide-react";
+import React, { useState } from "react";
+import { Search, Download } from "lucide-react";
 import StoryCard from "@/components/ui/StoryCard";
-
+import Pagination from "@/components/ui/Pagination";
+import { mockStories, quoteConfig, whitepaperConfig } from "@/config/storyData";
 
 export default function Stories() {
   const [activeTab, setActiveTab] = useState("All Stories");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const tabs = [
     "All Stories",
@@ -17,29 +19,34 @@ export default function Stories() {
     "Whitepapers",
   ];
 
-//   const filteredResources = useMemo(() => {
-//     return mockResources.filter((resource) => {
-//       const matchesSearch =
-//         resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-//         resource.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-//       return matchesSearch;
-//     });
-//   }, [searchQuery]);
+  const filteredStories = mockStories.filter((story) => {
+    const matchesTab =
+      activeTab === "All Stories" ||
+      story.category.toLowerCase() === activeTab.toLowerCase();
+    const matchesSearch =
+      story.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      story.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesTab && matchesSearch;
+  });
 
   return (
-    <section className="bg-zinc-950 py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header & Tabs */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
-          <div className="flex flex-wrap gap-2 border-b border-zinc-800 pb-1">
+    <section className="py-12 md:py-16 lg:py-20 bg-background text-foreground">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        {/* Header & Tabs & Search */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
+          {/* Tabs */}
+          <div className="flex flex-wrap gap-2 pb-2 flex-1 lg:max-w-3xl">
             {tabs.map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                onClick={() => {
+                  setActiveTab(tab);
+                  setCurrentPage(1);
+                }}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
                   activeTab === tab
-                    ? "bg-amber-500 text-black"
-                    : "text-zinc-400 hover:text-white hover:bg-zinc-900"
+                    ? "bg-primary text-white shadow-sm"
+                    : "text-muted hover:text-foreground hover:bg-card-border/50"
                 }`}
               >
                 {tab}
@@ -47,141 +54,84 @@ export default function Stories() {
             ))}
           </div>
 
-          {/* Search */}
+          {/* Search Bar */}
           <div className="relative w-full lg:w-80">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted">
               <Search size={20} />
-            </div>
+            </span>
             <input
               type="text"
               placeholder="Search insights..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-zinc-900 border border-zinc-700 pl-11 py-3 rounded-2xl text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-500 transition-colors"
+              className="w-full bg-card border border-border pl-11 pr-4 py-3 rounded-2xl text-foreground placeholder:text-muted/50 focus:outline-none focus:border-primary/60 transition-colors"
             />
           </div>
         </div>
 
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-          {/* Main Content Cards */}
-          <div className="lg:col-span-8 space-y-6">
-            {/* Card 1 - Light */}
-            <StoryCard
-              type="article"
-              title="Building Scalable Microservices in 2024"
-              excerpt="A deep dive into the architecture patterns that allow global teams to scale to millions of concurrent users without breaking a sweat."
-              category="TECH TRENDS"
-              date="Sept 20, 2023"
-              image="/images/microservices.jpg" // replace with real path later
-              logo="TECH II NATURAL"
-            />
-
-            {/* Card 2 - Dark with logo */}
-            <StoryCard
-              type="article"
-              title="Decentralized Finance: Beyond the Hype"
-              excerpt="How traditional financial institutions are integrating blockchain technology to increase transparency and lower operational costs."
-              category="INSIGHTS"
-              date="Sept 18, 2023"
-              image="/images/web3.jpg"
-              logo="web 3"
-            />
-
-            {/* Card 3 - Green */}
-            <StoryCard
-              type="article"
-              title="Zero-Trust Architecture in the Cloud"
-              excerpt="Securing the perimeter is no longer enough. Learn why identity is the new firewall in modern enterprise environments."
-              category="CYBERSECURITY"
-              date="Sept 12, 2023"
-              image="/images/zerotrust.jpg"
-            />
-
-            {/* Card 4 - Green Key */}
-            <StoryCard
-              type="news"
-              title="The Semiconductor Surge: Supply Chain Resilience"
-              excerpt="Analyzing the shift in global hardware production and its long-term effects on digital infrastructure costs."
-              category="INDUSTRY NEWS"
-              date="Sept 05, 2023"
-              image="/images/semiconductor.jpg"
-            />
-          </div>
-
-          {/* Sidebar */}
-          <div className="lg:col-span-4 space-y-6">
-            {/* Whitepaper */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 h-fit">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center">
-                  📘
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-amber-500">
-                    WHITEPAPER • 34 page PDF
-                  </p>
-                  <h3 className="text-xl font-semibold text-white mt-1">
-                    The Digital Transformation Roadmap for 2025
-                  </h3>
-                </div>
-              </div>
-              <p className="text-zinc-400 text-[15px] leading-relaxed mb-8">
-                We cover everything from cloud migration to AI governance.
-              </p>
-              <button className="w-full bg-white text-black py-3.5 rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-amber-500 hover:text-black transition-all">
-                <Download size={18} /> Download Whitepaper
-              </button>
-            </div>
-
-            {/* Quote Card */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-              <div className="text-6xl text-amber-500 mb-6">“</div>
-              <p className="text-lg leading-tight text-white mb-8">
-                The true digital empire isn’t built with just code, but with a
-                culture of relentless innovation and data-driven decision
-                making.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-zinc-700 rounded-2xl overflow-hidden">
-                  {/* Replace with Image */}
-                  <div className="w-full h-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold">
-                    SJ
-                  </div>
-                </div>
-                <div>
-                  <p className="font-medium">Sarah Jenkins</p>
-                  <p className="text-sm text-zinc-500">
-                    Director of Digital Strategy, JEVXO
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* 3 Columns Grid Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {filteredStories.map((story) => (
+            <StoryCard key={story.id} {...story} />
+          ))}
         </div>
 
-        {/* Pagination */}
-        <div className="flex justify-center mt-16">
-          <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-2xl p-2">
-            {[1, 2, 3, "...", 12].map((page, i) => (
-              <button
-                key={i}
-                className={`w-10 h-10 flex items-center justify-center rounded-xl text-sm font-medium transition-all ${
-                  page === 1
-                    ? "bg-amber-500 text-black"
-                    : "hover:bg-zinc-800 text-zinc-400"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-            <button className="ml-2 px-4 py-2 text-amber-500 hover:text-amber-400 flex items-center gap-1">
-              Next <ArrowRight size={16} />
+        {/* Dynamic Sidebar Features placed nicely below the grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 border-t border-border/40">
+          {/* Whitepaper Box */}
+          <div className="lg:col-span-7 card-gradient border border-card-border rounded-3xl p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-sm">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                📘
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-secondary">
+                  WHITEPAPER • {whitepaperConfig.pages}
+                </p>
+                <h3 className="text-xl font-bold text-foreground mt-1 mb-2">
+                  {whitepaperConfig.title}
+                </h3>
+                <p className="text-muted text-sm max-w-md">
+                  {whitepaperConfig.description}
+                </p>
+              </div>
+            </div>
+            <button className="w-full md:w-auto bg-primary text-white px-6 py-3.5 rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-primary-hover transition-all cursor-pointer whitespace-nowrap shadow-md shadow-primary/10">
+              <Download size={18} /> Download
             </button>
           </div>
+
+          {/* Quote Box */}
+          <div className="lg:col-span-5 card-gradient border border-card-border rounded-3xl p-8 flex flex-col justify-between shadow-sm">
+            <p className="text-base italic font-medium leading-relaxed text-foreground mb-6 relative">
+              <span className="text-3xl font-serif text-secondary leading-none select-none absolute -left-3 -top-2">
+                “
+              </span>
+              <span className="pl-4 block">{quoteConfig.text}</span>
+            </p>
+            <div className="flex items-center gap-3 pl-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xs font-bold shrink-0">
+                {quoteConfig.initials}
+              </div>
+              <div>
+                <p className="text-sm font-bold text-foreground">
+                  {quoteConfig.author}
+                </p>
+                <p className="text-xs text-muted">{quoteConfig.role}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Pagination Section */}
+        <div className="flex justify-center mt-12">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={12}
+            onPageChange={(page) => setCurrentPage(Number(page))}
+          />
         </div>
       </div>
     </section>
   );
 }
-

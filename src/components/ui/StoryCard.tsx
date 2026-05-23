@@ -1,64 +1,75 @@
-import { ArrowRight, Calendar } from "lucide-react";
+"use client";
+
+import React from "react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Story } from "@/types/success-stories";
 
-interface StoryCard {
-  id?: string;
-  type: "article" | "whitepaper" | "quote" | "news";
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readTime?: string;
-  image?: string;
-  author?: string;
-  logo?: string;
-  badge?: string;
-}
-
-
-const StoryCard = ({ title, excerpt, category, date, image, logo }: StoryCard) => {
+export default function StoryCard({
+  title,
+  excerpt,
+  category,
+  date,
+  image,
+  logo,
+  readTime,
+}: Story) {
   return (
-    <div className="group bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-amber-500/30 transition-all duration-300 cursor-pointer">
+    <div className="group bg-card border border-card-border rounded-3xl overflow-hidden transition-all duration-300 shadow-sm flex flex-col h-full cursor-pointer hover:shadow-md">
+      {/* Image Wrapper */}
       {image && (
-        <div className="relative h-56 overflow-hidden">
+        <div className="relative h-52 md:h-56 w-full overflow-hidden bg-muted/20">
           <Image
             src={image}
             alt={title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
           />
           {logo && (
-            <div className="absolute top-6 left-6 bg-white/90 text-black text-xs font-bold px-4 py-1.5 rounded-2xl">
+            <div className="absolute top-5 left-5 bg-white/95 text-black text-[11px] font-bold px-3.5 py-1.5 rounded-full shadow-sm uppercase tracking-wider">
               {logo}
             </div>
           )}
         </div>
       )}
 
-      <div className="p-8">
-        <div className="flex items-center gap-4 text-xs uppercase tracking-widest text-amber-500 mb-3">
+      {/* Content Area */}
+      <div className="p-6 md:p-8 flex flex-col flex-1">
+        {/* Meta Row */}
+        <div className="flex items-center flex-wrap gap-2 text-[11px] font-bold uppercase tracking-widest text-secondary mb-3">
           <span>{category}</span>
-          <span className="text-zinc-600">•</span>
-          <span className="flex items-center gap-1">
-            <Calendar size={14} /> {date}
-          </span>
+          {readTime && (
+            <>
+              <span className="text-muted/40 font-normal">•</span>
+              <span className="text-muted/80 font-medium normal-case tracking-normal">
+                {readTime}
+              </span>
+            </>
+          )}
         </div>
 
-        <h3 className="text-2xl font-semibold text-white leading-tight mb-4 group-hover:text-amber-400 transition-colors">
+        {/* Title */}
+        <h3 className="text-xl md:text-2xl font-bold text-foreground leading-tight mb-3 group-hover:text-primary transition-colors duration-200">
           {title}
         </h3>
 
-        <p className="text-zinc-400 leading-relaxed line-clamp-3">{excerpt}</p>
+        {/* Excerpt */}
+        <p className="text-muted text-[14px] md:text-base leading-relaxed line-clamp-3 mb-6 flex-1">
+          {excerpt}
+        </p>
 
-        <div className="mt-6 flex items-center text-amber-500 text-sm font-medium">
-          Read more{" "}
-          <ArrowRight
-            size={16}
-            className="ml-2 group-hover:translate-x-1 transition-transform"
-          />
+        {/* Date & Trigger */}
+        <div className="pt-4 border-t border-border/50 flex items-center justify-between mt-auto">
+          <span className="text-xs text-muted/70 font-medium">{date}</span>
+          <div className="flex items-center text-primary text-sm font-semibold transition-colors group-hover:text-primary-hover">
+            Read more{" "}
+            <ArrowRight
+              size={16}
+              className="ml-1.5 group-hover:translate-x-1 transition-transform duration-200"
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 }
-export default StoryCard;
