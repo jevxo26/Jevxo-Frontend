@@ -1,4 +1,4 @@
-import { StatItems } from "@/types/home/StatItems";
+import { StatItems } from "@/types/home";
 
 export const STATS_DATA: StatItems[] = [
   { id: 1, value: "500+", label: "Projects Delivered" },

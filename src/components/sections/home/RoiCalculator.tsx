@@ -6,9 +6,9 @@ import { motion, Variants } from "framer-motion";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Decors2 from "@/components/ui/Decors/Decors2";
 import { SERVICES } from "@/config/home/servicesData";
-import RoiBudget from "@/components/ui/RoiBudget";
-import RoiServiceSelector from "@/components/ui/RoiServiceSelector";
-import RoiChart from "@/components/ui/RoiChart";
+import RoiBudget from "@/components/ui/home/RoiBudget";
+import RoiServiceSelector from "@/components/ui/home/RoiServiceSelector";
+import RoiChart from "@/components/ui/home/RoiChart";
 
 
 const fmtK = (n: number) => (n === 0 ? "$0k" : `$${Math.round(n / 1000)}k`);

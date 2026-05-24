@@ -1,10 +1,17 @@
 import { Compass, PlayCircle } from "lucide-react";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import Galaxy from "@/components/ui/Galaxy";
 
 const Hero = () => {
   return (
-    <section className="relative py-12 md:py-16 lg:py-20 mt-16 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+    <section className="relative bg-background overflow-hidden min-h-[500px] flex items-center justify-center">
+      {/* 🌌 background layer: galaxy component */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <Galaxy />
+      </div>
+
+      {/* 📝 foreground layer: content container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20 mt-16 w-full">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
             Proprietary{" "}
@@ -12,6 +19,7 @@ const Hero = () => {
               Growth Engines
             </span>
           </h2>
+
           <p className="text-muted text-base md:text-lg leading-relaxed mb-10">
             We don't just build software; we architect competitive advantages.
             Explore our suite of internal SaaS tools and high-performance

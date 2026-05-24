@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Search, Download } from "lucide-react";
-import StoryCard from "@/components/ui/StoryCard";
+import StoryCard from "@/components/ui/success-stories/StoryCard";
 import Pagination from "@/components/ui/Pagination";
 import { mockStories, quoteConfig, whitepaperConfig } from "@/config/storyData";
 

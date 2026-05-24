@@ -4,8 +4,8 @@ import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 
 import SectionTitle from "@/components/shared/SectionTitle";
-import CenterCore from "@/components/ui/CenterCore";
-import OrbitNode from "@/components/ui/OrbitNode";
+import CenterCore from "@/components/ui/home/CenterCore";
+import OrbitNode from "@/components/ui/home/OrbitNode";
 import Decors1 from "@/components/ui/Decors/Decors1";
 import { orbitNodes } from "@/config/home/orbitNodeData";
 import { StarItems } from "@/types/home";
