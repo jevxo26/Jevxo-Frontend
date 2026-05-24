@@ -91,6 +91,13 @@ export interface FeaturedCaseStudyProps {
   icons: string[];
 }
 
+export interface ShowcaseItem {
+  image: string;
+  title: string;
+  icons: string[];
+  description: string;
+}
+
 export interface ShowcaseCardProps {
   image: string;
   title: string;

@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
 import SectionTitle from "@/components/shared/SectionTitle";
-import ShowcaseCard from "@/components/ui/ShowcaseCard";
-import FeaturedCaseStudy from "@/components/ui/FeaturedCaseStudy";
+import ShowcaseCard from "@/components/ui/home/ShowcaseCard";
+import FeaturedCaseStudy from "@/components/ui/home/FeaturedCaseStudy";
 import Decors3 from "@/components/ui/Decors/Decors3";
 import { SHOWCASE_CARDS } from "@/config/home/showcase";
 

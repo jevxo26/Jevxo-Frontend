@@ -1,3 +1,5 @@
+import { ShowcaseItem } from "@/types/home";
+
 const jsIcon = "/icons/js-icon.png";
 const boxIcon = "/icons/box-icon.png";
 const meshIcon = "/icons/mesh-icon.png";
@@ -9,12 +11,6 @@ const luxePreview = "/luxe-preview.png";
 const ICONS_1: string[] = [jsIcon, boxIcon, meshIcon];
 const ICONS_2: string[] = [growthIcon, terminalIcon, cloudIcon];
 
-interface ShowcaseItem {
-  image: string;
-  title: string;
-  icons: string[];
-  description: string;
-}
 
 export const SHOWCASE_CARDS: ShowcaseItem[] = [
   {

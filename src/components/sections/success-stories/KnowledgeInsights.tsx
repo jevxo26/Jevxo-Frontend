@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import FeaturedStoryImage from "@/components/ui/FeaturedStoryImage";
+import FeaturedStoryImage from "@/components/ui/success-stories/FeaturedStoryImage";
 
 const KnowledgeInsights = () => {
   return (

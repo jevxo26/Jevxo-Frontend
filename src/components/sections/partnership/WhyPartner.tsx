@@ -4,7 +4,7 @@ import { PARTNERSHIP_FEATURES } from "@/config/partnershipFeatures";
 const WhyPartner = () => {
     return (
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="bg-card/50 border border-card-border/50 rounded-3xl p-6 md:p-10 relative">
+        <div className="bg-card/50 border border-card-border/50 p-8 rounded-3xl my-12 md:my-16 lg:my-20 relative">
           {/* Sub-header */}
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-foreground mb-4">

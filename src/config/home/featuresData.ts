@@ -6,7 +6,6 @@ import {
   LineChart,
   LayoutGrid,
   CheckSquare,
-  LucideIcon,
 } from "lucide-react";
 
 export const FEATURES: FeatureItems[] = [

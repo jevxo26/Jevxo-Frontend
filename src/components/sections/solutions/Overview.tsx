@@ -1,4 +1,4 @@
-import SolutionCard from "@/components/ui/SolutionCard";
+import SolutionCard from "@/components/ui/solutions/SolutionCard";
 import { SOLUTIONS_DATA } from "@/config/solutions";
 
 const Overview = () => {
@@ -20,7 +20,7 @@ const Overview = () => {
             Overview
           </h2>
 
-          <p className="text-primary text-base md:text-lg leading-relaxed max-w-2xl">
+          <p className="text-muted text-base md:text-lg leading-relaxed max-w-2xl">
             A Unified Ecosystem where Strategy, Design, and Technology work as
             one. We build the digital empires of tomorrow.
           </p>

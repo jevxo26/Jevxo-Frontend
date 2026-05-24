@@ -1,4 +1,4 @@
-import { OrbitNodeItems } from "@/types/home/OrbitNodeItems";
+import { OrbitNodeItems } from "@/types/home";
 
 
 const OrbitNode = ({ icon, title, subtitle, style }: OrbitNodeItems) => (

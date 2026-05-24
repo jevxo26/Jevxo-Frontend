@@ -1,5 +1,5 @@
 import { TrendingUp, Palette, Smartphone, Globe } from "lucide-react";
-import { OrbitNodeItems } from "@/types/home/OrbitNodeItems";
+import { OrbitNodeItems } from "@/types/home";
 
 // ─── Constants ────────────────────────────────────────────────────────────
 const SIZE = 650;
