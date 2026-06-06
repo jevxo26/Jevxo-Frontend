@@ -33,14 +33,15 @@ const Stats = () => {
   return (
     <div
       className="
-            my-12
-            md:my-16 lg:my-20
+            py-12
+            md:py-16 lg:py-20
             grid
             grid-cols-2
             md:grid-cols-4
             justify-center
             gap-10
             px-4 md:px-6
+            max-w-7xl mx-auto
           "
     >
       {stats.map((item) => (

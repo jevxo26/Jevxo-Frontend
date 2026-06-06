@@ -33,8 +33,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${inter.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="min-h-screen relative overflow-x-hidden">
+        <ThemeProvider>
+          <main className="z-10 relative">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

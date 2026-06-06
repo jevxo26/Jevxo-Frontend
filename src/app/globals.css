@@ -23,46 +23,38 @@
 
 /* ====================== LIGHT MODE ====================== */
 :root {
-  --background: #f3f9ff;
-  --foreground: #0f172a;
-  
-  --nav-footer: rgba(222, 230, 246, 0.92);
-  --nav-border: rgba(148, 163, 184, 0.3);
-  
-  --card: #ffffff;
-  --card-gradient: linear-gradient(180deg, #ffffff 0%, #d2dafa77 100%);
-  --card-border: rgba(203, 210, 219, 0.9);
-  
-  --primary: #1e40af;
-  --secondary: #efb247;
-  --primary-hover: #1e3a8a;
-  --primary-glow: rgba(30, 64, 175, 0.18);
-  
-  --muted: #64748b;
-  --accent: #20cfff;
-  --border: #e2e8f0;
+--background: #f8fafc;
+--foreground: #0f172a;
+--nav-footer: rgba(241, 245, 255, 0.95);
+--nav-border: #c9c9c9;
+--card: #ffffff;
+--card-gradient: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+--card-border: #dddddd;
+--primary: #1e3a8a;
+--primary-hover: #1e40af;
+--primary-glow: rgba(30, 58, 138, 0.15);
+--secondary: #eab308;
+--accent: #22d3ee;
+--muted: #64748b;
+--border: #e2e8f0;
 }
 
 /* ====================== DARK MODE ====================== */
 .dark {
-  --background: #0B0F14;
-  --foreground: #ffffff;
-  
-  --nav-footer: rgba(10, 15, 28, 0.95);
-  --nav-border: rgba(148, 163, 184, 0.15);
-  
-  --card: #0B0F14;
-  --card-gradient: linear-gradient(180deg, #0a0f19 0%, #13171b 100%);
-  --card-border: #334155;
-  
-  --primary: #2E7BFF;
-  --secondary: #E6B86A;
-  --primary-hover: #1b67ff;
-  --primary-glow: rgba(46, 124, 246, 0.35);
-  
-  --muted: rgba(255, 255, 255, 0.55);
-  --accent: #6fe7dd;
-  --border: #334155;
+--background: #0b0f14;
+--foreground: #f8fafc;
+--nav-footer: rgba(15, 23, 42, 0.95);
+--nav-border: #303351ac;
+--card: #111827;
+--card-gradient: linear-gradient(180deg, #111827 0%, #1e2937 100%);
+--card-border: #3f3f3f;
+--primary: #3b82f6;
+--primary-hover: #60a5fa;
+--primary-glow: rgba(59, 130, 246, 0.35);
+--secondary: #fcd34d;
+--accent: #67e8f9;
+--muted: #94a3b8;
+--border: #334155;
 }
 
 html {
@@ -72,14 +64,25 @@ html {
 
 body {
   background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* No background-image here anymore */
 }
+
+/* html.dark body {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px);
+
+  background-size: 35px 40px;
+} */
+
+/* LIGHT MODE ONLY
+html:not(.dark) body {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+
+  background-size: 30px 30px;
+} */
 
 /* ====================== BACKGROUND UTILITIES ====================== */
 /* Grid Pattern - Visible in both modes */
@@ -114,10 +117,10 @@ body {
 /* Orbit Glow - Works in both Light & Dark */
 .orbit-glow {
   background: var(--primary);
-  filter: blur(123px);
-  opacity: 0.88;
+  filter: blur(100px);
+  opacity: 0.77;
 }
 
 .dark .orbit-glow {
-  opacity: 0.99;
+  opacity: 0.88;
 }

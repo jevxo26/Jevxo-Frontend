@@ -9,7 +9,7 @@ const ShowcaseCard = ({
   description,
 }: ShowcaseCardProps) => {
   return (
-    <div className="rounded-[22px] overflow-hidden card-gradient border-card-border group transition-all duration-500 hover:-translate-y-1 hover:border-primary">
+    <div className="rounded-[22px] overflow-hidden card-gradient border-card-border group transition-all duration-500 hover:-translate-y-1 hover:border-primary shadow-lg">
       {/* Image */}
       <div className="h-[250px] overflow-hidden">
         <Image
