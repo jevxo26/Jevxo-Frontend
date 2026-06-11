@@ -87,7 +87,7 @@ const GrowthEngine = () => {
   });
 
   return (
-    <section className="relative px-4 md:px-6 pt-12 md:pt-16 lg:pt-20 pb-16 md:pb-28 lg:pb-40 bg-background bg-grid-pattern overflow-visible">
+    <section className="relative px-4 md:px-6 pt-12 md:pt-16 lg:pt-20 pb-16 md:pb-28 lg:pb-40 overflow-visible">
 
       {/* Stars Layer - Fixed for Light Mode */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
@@ -230,9 +230,6 @@ const GrowthEngine = () => {
           </div>
         </div>
       </div>
-
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 w-full h-22 bg-gradient-to-b from-transparent to-background pointer-events-none" />
     </section>
   );
 };

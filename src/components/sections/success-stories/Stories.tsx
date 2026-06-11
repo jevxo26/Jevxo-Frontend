@@ -30,7 +30,7 @@ export default function Stories() {
   });
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-background text-foreground">
+    <section className="py-12 md:py-16 lg:py-20 text-foreground">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header & Tabs & Search */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">

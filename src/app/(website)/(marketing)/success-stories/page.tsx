@@ -4,11 +4,11 @@ import Stories from "@/components/sections/success-stories/Stories";
 
 const page = () => {
     return (
-        <div className="bg-background">
-            <KnowledgeInsights/>
-            <Stories/>
-            <Newsletter/>
-        </div>
+      <div className="bg-background bg-grid-pattern">
+        <KnowledgeInsights />
+        <Stories />
+        <Newsletter />
+      </div>
     );
 };
 

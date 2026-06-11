@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const FeaturedCaseStudy = ({ image, icons }: FeaturedCaseStudyProps) => {
   return (
-    <div className="h-full lg:col-span-2 rounded-3xl relative z-0 border-card-border card-gradient grid md:grid-cols-2 transition-all duration-500 hover:scale-102 hover:border-primary">
+    <div className="h-full lg:col-span-2 rounded-3xl relative z-0 border-card-border card-gradient grid md:grid-cols-2 transition-all duration-500 shadow-xl hover:scale-102 hover:border-primary">
       {/* Left: Image */}
       <div className="relative bg-[#E9E9E9] rounded-3xl">
         <Image

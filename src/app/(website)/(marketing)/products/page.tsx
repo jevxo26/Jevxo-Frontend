@@ -6,7 +6,7 @@ import InsightPro from "@/components/sections/products/InsightPro";
 
 const Products = () => {
     return (
-        <div>
+        <div className="bg-grid-pattern bg-background">
             <Hero/>
             <InsightPro/>
             <EduInfrastructure/>

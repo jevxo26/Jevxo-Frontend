@@ -45,7 +45,7 @@ const FlexiblePricing = () => {
   const sliderPercent = ((students - 100) / (10000 - 100)) * 100;
 
   return (
-    <section className="relative bg-background py-12 md:py-16 lg:py-20 z-0">
+    <section className="relative py-12 md:py-16 lg:py-20 z-0">
       <div className="relative z-0 max-w-7xl mx-auto px-4 md:px-6">
         <div className="hidden md:block">
           <Decors6 />

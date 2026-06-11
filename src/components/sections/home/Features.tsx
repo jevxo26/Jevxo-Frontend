@@ -30,7 +30,7 @@ const cardFadeUp: Variants = {
 // ─── Main Component ──────────────────────────────────────────────────────
 const Features = () => {
   return (
-    <section className="relative bg-background py-12 md:py-16 lg:py-20">
+    <section className="relative py-12 md:py-16 lg:py-20">
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         <div className="hidden md:block">
           <Decors5 />

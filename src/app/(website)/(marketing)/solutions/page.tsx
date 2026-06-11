@@ -4,7 +4,7 @@ import Stats from "@/components/sections/solutions/Stats";
 
 const Solutions = () => {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="bg-grid-pattern relative inset-0">
       <Overview/>
       <RoiGrowthEngine/>
       <Stats/>

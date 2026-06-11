@@ -16,9 +16,9 @@ const Estimator = () => {
     : 0;
 
   return (
-    <div className="bg-background py-12 md:py-16 lg:py-20">
+    <div className="py-12 md:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="bg-card-gradient border border-card-border rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+        <div className="card-gradient border border-card-border rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
             {/* Calculator Controls (Left, takes 5 cols) */}
             <div className="lg:col-span-5 flex flex-col">

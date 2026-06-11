@@ -36,7 +36,7 @@ const fadeUp: Variants = {
 // ─── Main Component ──────────────────────────────────────────────────────
 const Education = () => {
   return (
-    <section className="relative bg-background py-12 md:py-16 lg:py-20">
+    <section className="relative py-12 md:py-16 lg:py-20">
       <div className="hidden md:block">
         <Decors4 />
       </div>
